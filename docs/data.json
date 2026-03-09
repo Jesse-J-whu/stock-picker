@@ -1,25 +1,6 @@
 {
-  "update_time": "2026-03-09 11:38:56",
+  "update_time": "2026-03-09 03:50:52",
   "strategy": "周线爆发",
-  "count": 2,
-  "stocks": [
-    {
-      "code": "000001",
-      "name": "平安银行",
-      "price": 12.35,
-      "change_pct": 2.15,
-      "open": 12.1,
-      "high": 12.5,
-      "low": 12.0
-    },
-    {
-      "code": "600519",
-      "name": "贵州茅台",
-      "price": 1680.0,
-      "change_pct": -0.53,
-      "open": 1690.0,
-      "high": 1695.0,
-      "low": 1675.0
-    }
-  ]
+  "count": 0,
+  "stocks": []
 }
