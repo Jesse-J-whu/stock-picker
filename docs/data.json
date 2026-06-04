@@ -1,95 +1,117 @@
 {
-  "update_time": "2026-06-03 12:12:21",
+  "update_time": "2026-06-04 08:19:50",
   "strategy": "周线爆发",
-  "count": 13,
+  "count": 20,
   "stocks": [
     {
       "code": "000430",
       "name": "张家界",
-      "price": 8.3,
-      "change_pct": 1.72,
-      "volume": 208531.0,
+      "price": 8.29,
+      "change_pct": -0.12,
+      "volume": 175193.0,
       "turnover": 0,
-      "high": 8.53,
-      "low": 8.07,
-      "open": 8.16
+      "high": 8.34,
+      "low": 7.99,
+      "open": 8.2
     },
     {
       "code": "000509",
       "name": "华塑控股",
-      "price": 4.89,
-      "change_pct": -5.05,
-      "volume": 1871803.0,
+      "price": 4.79,
+      "change_pct": -2.04,
+      "volume": 1551063.0,
       "turnover": 0,
-      "high": 5.23,
-      "low": 4.64,
-      "open": 4.77
+      "high": 5.2,
+      "low": 4.7,
+      "open": 4.75
+    },
+    {
+      "code": "000608",
+      "name": "阳光股份",
+      "price": 5.02,
+      "change_pct": 8.19,
+      "volume": 647516.0,
+      "turnover": 0,
+      "high": 5.1,
+      "low": 4.71,
+      "open": 4.75
     },
     {
       "code": "002925",
       "name": "盈趣科技",
-      "price": 22.46,
-      "change_pct": 1.81,
-      "volume": 335214.0,
+      "price": 22.6,
+      "change_pct": 0.62,
+      "volume": 231905.0,
       "turnover": 0,
-      "high": 22.89,
-      "low": 21.59,
-      "open": 21.6
+      "high": 23.06,
+      "low": 22.09,
+      "open": 22.21
     },
     {
       "code": "300163",
       "name": "先锋新材",
-      "price": 6.43,
-      "change_pct": 1.42,
-      "volume": 345953.0,
+      "price": 6.27,
+      "change_pct": -2.49,
+      "volume": 360514.0,
       "turnover": 0,
-      "high": 6.51,
-      "low": 6.2,
-      "open": 6.29
+      "high": 6.43,
+      "low": 6.11,
+      "open": 6.32
     },
     {
       "code": "300286",
       "name": "安科瑞",
-      "price": 32.62,
-      "change_pct": 6.64,
-      "volume": 176461.0,
+      "price": 33.05,
+      "change_pct": 1.32,
+      "volume": 129290.0,
       "turnover": 0,
-      "high": 34.15,
-      "low": 31.08,
-      "open": 31.08
+      "high": 34.0,
+      "low": 31.96,
+      "open": 32.2
     },
     {
       "code": "300328",
       "name": "宜安科技",
-      "price": 19.64,
-      "change_pct": -1.95,
-      "volume": 611833.0,
+      "price": 19.6,
+      "change_pct": -0.2,
+      "volume": 439927.0,
       "turnover": 0,
-      "high": 20.43,
-      "low": 19.37,
-      "open": 19.8
+      "high": 20.14,
+      "low": 19.28,
+      "open": 19.41
+    },
+    {
+      "code": "300686",
+      "name": "智动力",
+      "price": 19.7,
+      "change_pct": 6.6,
+      "volume": 379519.0,
+      "turnover": 0,
+      "high": 20.48,
+      "low": 18.3,
+      "open": 18.52
     },
     {
       "code": "301305",
       "name": "朗坤科技",
-      "price": 30.98,
-      "change_pct": -0.58,
-      "volume": 128449.0,
+      "price": 31.85,
+      "change_pct": 2.81,
+      "volume": 142979.0,
       "turnover": 0,
-      "high": 31.35,
-      "low": 30.0,
-      "open": 30.7
+      "high": 32.2,
+      "low": 30.26,
+      "open": 30.36
     },
     {
       "code": "301591",
       "name": "肯特股份",
-      "price": 53.02,
-      "change_pct": 4.33,
-      "volume": 151927.0,
+      "price": 51.21,
+      "change_pct": -3.41,
+      "volume": 154343.0,
       "turnover": 0,
-      "high": 53.98,
-      "low": 48.72,
-      "open": 50.18
+      "high": 51.8,
+      "low": 46.95,
+      "open": 50.45
     },
     {
       "code": "600263",
@@ -114,37 +136,92 @@
       "open": 0.0
     },
     {
+      "code": "600688",
+      "name": "上海石化",
+      "price": 3.38,
+      "change_pct": 10.1,
+      "volume": 1757458.0,
+      "turnover": 0,
+      "high": 3.38,
+      "low": 3.32,
+      "open": 3.38
+    },
+    {
+      "code": "600985",
+      "name": "淮北矿业",
+      "price": 16.58,
+      "change_pct": 4.74,
+      "volume": 639538.0,
+      "turnover": 0,
+      "high": 17.4,
+      "low": 15.63,
+      "open": 15.83
+    },
+    {
+      "code": "603610",
+      "name": "麒盛科技",
+      "price": 19.32,
+      "change_pct": 10.02,
+      "volume": 143818.0,
+      "turnover": 0,
+      "high": 19.32,
+      "low": 17.4,
+      "open": 17.49
+    },
+    {
       "code": "603681",
       "name": "永冠新材",
-      "price": 26.11,
-      "change_pct": 4.73,
-      "volume": 217430.0,
+      "price": 26.6,
+      "change_pct": 1.88,
+      "volume": 547474.0,
       "turnover": 0,
-      "high": 26.48,
-      "low": 23.88,
-      "open": 24.76
+      "high": 28.72,
+      "low": 25.79,
+      "open": 28.72
+    },
+    {
+      "code": "688019",
+      "name": "安集科技",
+      "price": 282.59,
+      "change_pct": 1.29,
+      "volume": 5429428.0,
+      "turnover": 0,
+      "high": 285.78,
+      "low": 270.12,
+      "open": 270.7
     },
     {
       "code": "688352",
       "name": "颀中科技",
-      "price": 22.96,
-      "change_pct": -2.79,
-      "volume": 57590674.0,
+      "price": 21.56,
+      "change_pct": -6.1,
+      "volume": 55057093.0,
       "turnover": 0,
-      "high": 24.31,
-      "low": 22.33,
-      "open": 23.44
+      "high": 22.99,
+      "low": 21.38,
+      "open": 22.34
     },
     {
       "code": "688511",
       "name": "天微电子",
-      "price": 24.37,
-      "change_pct": 0.54,
-      "volume": 2263834.0,
+      "price": 24.85,
+      "change_pct": 1.97,
+      "volume": 2666259.0,
       "turnover": 0,
-      "high": 24.98,
-      "low": 23.91,
-      "open": 24.75
+      "high": 25.07,
+      "low": 23.99,
+      "open": 24.3
+    },
+    {
+      "code": "688711",
+      "name": "宏微科技",
+      "price": 34.47,
+      "change_pct": 1.89,
+      "volume": 15936511.0,
+      "turnover": 0,
+      "high": 36.5,
+      "low": 33.83,
+      "open": 34.0
     }
   ]
 }
