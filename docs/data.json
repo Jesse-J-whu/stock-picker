@@ -1,51 +1,51 @@
 {
-  "update_time": "2026-06-10 11:11:41",
+  "update_time": "2026-06-11 11:39:28",
   "strategy": "周线爆发",
-  "count": 6,
+  "count": 7,
   "stocks": [
     {
       "code": "000608",
       "name": "阳光股份",
-      "price": 6.94,
-      "change_pct": 8.44,
-      "volume": 1196539.0,
+      "price": 6.25,
+      "change_pct": -9.94,
+      "volume": 667277.0,
       "turnover": 0,
-      "high": 7.04,
-      "low": 6.05,
-      "open": 6.12
+      "high": 7.05,
+      "low": 6.25,
+      "open": 6.9
     },
     {
       "code": "300163",
       "name": "先锋新材",
-      "price": 6.47,
-      "change_pct": -6.77,
-      "volume": 507505.0,
+      "price": 6.33,
+      "change_pct": -2.16,
+      "volume": 319603.0,
       "turnover": 0,
-      "high": 6.89,
-      "low": 6.32,
-      "open": 6.87
+      "high": 6.58,
+      "low": 6.16,
+      "open": 6.39
     },
     {
       "code": "300304",
       "name": "云意电气",
-      "price": 16.15,
-      "change_pct": -3.29,
-      "volume": 383483.0,
+      "price": 15.5,
+      "change_pct": -4.02,
+      "volume": 390629.0,
       "turnover": 0,
-      "high": 16.81,
-      "low": 16.02,
-      "open": 16.5
+      "high": 16.18,
+      "low": 15.35,
+      "open": 16.01
     },
     {
       "code": "300346",
       "name": "南大光电",
-      "price": 61.72,
-      "change_pct": -1.58,
-      "volume": 780517.0,
+      "price": 66.71,
+      "change_pct": 8.08,
+      "volume": 1252645.0,
       "turnover": 0,
-      "high": 63.66,
-      "low": 61.0,
-      "open": 62.5
+      "high": 68.5,
+      "low": 61.71,
+      "open": 61.71
     },
     {
       "code": "600263",
@@ -68,6 +68,17 @@
       "high": 0.0,
       "low": 0.0,
       "open": 0.0
+    },
+    {
+      "code": "603650",
+      "name": "彤程新材",
+      "price": 64.3,
+      "change_pct": 7.58,
+      "volume": 551011.0,
+      "turnover": 0,
+      "high": 65.75,
+      "low": 59.0,
+      "open": 59.38
     }
   ]
 }
