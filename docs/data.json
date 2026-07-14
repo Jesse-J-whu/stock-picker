@@ -1,19 +1,8 @@
 {
-  "update_time": "2026-07-13 10:42:54",
+  "update_time": "2026-07-14 09:21:59",
   "strategy": "周线爆发",
   "count": 5,
   "stocks": [
-    {
-      "code": "300717",
-      "name": "华信新材",
-      "price": 22.44,
-      "change_pct": -6.89,
-      "volume": 73995.0,
-      "turnover": 0,
-      "high": 23.89,
-      "low": 22.08,
-      "open": 23.25
-    },
     {
       "code": "600263",
       "name": "路桥建设",
@@ -37,26 +26,37 @@
       "open": 0.0
     },
     {
+      "code": "600851",
+      "name": "海欣股份",
+      "price": 8.72,
+      "change_pct": 1.75,
+      "volume": 187912.0,
+      "turnover": 0,
+      "high": 8.75,
+      "low": 8.26,
+      "open": 8.43
+    },
+    {
       "code": "603682",
       "name": "锦和商管",
-      "price": 8.78,
-      "change_pct": 1.15,
-      "volume": 265401.0,
+      "price": 8.93,
+      "change_pct": 1.71,
+      "volume": 173423.0,
       "turnover": 0,
-      "high": 9.3,
-      "low": 8.6,
-      "open": 8.65
+      "high": 9.16,
+      "low": 8.52,
+      "open": 8.95
     },
     {
       "code": "605178",
       "name": "时空科技",
-      "price": 96.23,
-      "change_pct": -5.24,
-      "volume": 91018.0,
+      "price": 98.33,
+      "change_pct": 2.18,
+      "volume": 59188.0,
       "turnover": 0,
-      "high": 111.0,
-      "low": 95.05,
-      "open": 102.94
+      "high": 103.5,
+      "low": 93.41,
+      "open": 95.56
     }
   ]
 }
