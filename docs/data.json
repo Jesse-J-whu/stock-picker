@@ -1,41 +1,8 @@
 {
-  "update_time": "2026-07-16 09:32:54",
+  "update_time": "2026-07-17 09:24:38",
   "strategy": "周线爆发",
-  "count": 9,
+  "count": 3,
   "stocks": [
-    {
-      "code": "300142",
-      "name": "沃森生物",
-      "price": 13.99,
-      "change_pct": 1.45,
-      "volume": 1138176.0,
-      "turnover": 0,
-      "high": 14.15,
-      "low": 13.2,
-      "open": 13.54
-    },
-    {
-      "code": "300717",
-      "name": "华信新材",
-      "price": 22.4,
-      "change_pct": -4.96,
-      "volume": 46289.0,
-      "turnover": 0,
-      "high": 23.34,
-      "low": 22.31,
-      "open": 23.34
-    },
-    {
-      "code": "301230",
-      "name": "泓博医药",
-      "price": 34.33,
-      "change_pct": 6.09,
-      "volume": 284508.0,
-      "turnover": 0,
-      "high": 36.99,
-      "low": 30.9,
-      "open": 32.0
-    },
     {
       "code": "600263",
       "name": "路桥建设",
@@ -50,13 +17,13 @@
     {
       "code": "600428",
       "name": "中远海特",
-      "price": 10.4,
-      "change_pct": -1.61,
-      "volume": 917243.0,
+      "price": 10.56,
+      "change_pct": 1.54,
+      "volume": 997394.0,
       "turnover": 0,
-      "high": 10.74,
-      "low": 10.28,
-      "open": 10.58
+      "high": 11.02,
+      "low": 10.34,
+      "open": 10.4
     },
     {
       "code": "600553",
@@ -68,39 +35,6 @@
       "high": 0.0,
       "low": 0.0,
       "open": 0.0
-    },
-    {
-      "code": "600851",
-      "name": "海欣股份",
-      "price": 9.06,
-      "change_pct": -0.88,
-      "volume": 404644.0,
-      "turnover": 0,
-      "high": 9.45,
-      "low": 8.59,
-      "open": 9.0
-    },
-    {
-      "code": "603682",
-      "name": "锦和商管",
-      "price": 8.68,
-      "change_pct": -4.3,
-      "volume": 133248.0,
-      "turnover": 0,
-      "high": 9.15,
-      "low": 8.6,
-      "open": 9.0
-    },
-    {
-      "code": "605178",
-      "name": "时空科技",
-      "price": 98.5,
-      "change_pct": -0.81,
-      "volume": 49609.0,
-      "turnover": 0,
-      "high": 103.99,
-      "low": 94.45,
-      "open": 97.56
     }
   ]
 }
