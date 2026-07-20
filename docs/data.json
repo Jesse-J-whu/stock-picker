@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-07-17 09:24:38",
+  "update_time": "2026-07-20 10:12:08",
   "strategy": "周线爆发",
-  "count": 3,
+  "count": 4,
   "stocks": [
     {
       "code": "600263",
@@ -17,13 +17,24 @@
     {
       "code": "600428",
       "name": "中远海特",
-      "price": 10.56,
-      "change_pct": 1.54,
-      "volume": 997394.0,
+      "price": 11.17,
+      "change_pct": 5.78,
+      "volume": 1243289.0,
       "turnover": 0,
-      "high": 11.02,
-      "low": 10.34,
-      "open": 10.4
+      "high": 11.45,
+      "low": 10.31,
+      "open": 10.72
+    },
+    {
+      "code": "600483",
+      "name": "福能股份",
+      "price": 11.4,
+      "change_pct": 6.54,
+      "volume": 365122.0,
+      "turnover": 0,
+      "high": 11.42,
+      "low": 10.69,
+      "open": 10.74
     },
     {
       "code": "600553",
