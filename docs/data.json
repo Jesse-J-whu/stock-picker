@@ -1,8 +1,19 @@
 {
-  "update_time": "2026-07-21 09:48:48",
+  "update_time": "2026-07-22 09:43:34",
   "strategy": "周线爆发",
-  "count": 4,
+  "count": 5,
   "stocks": [
+    {
+      "code": "600236",
+      "name": "桂冠电力",
+      "price": 12.24,
+      "change_pct": 8.8,
+      "volume": 788754.0,
+      "turnover": 0,
+      "high": 12.38,
+      "low": 10.78,
+      "open": 10.81
+    },
     {
       "code": "600263",
       "name": "路桥建设",
@@ -17,24 +28,24 @@
     {
       "code": "600428",
       "name": "中远海特",
-      "price": 10.9,
-      "change_pct": -2.42,
-      "volume": 1178237.0,
+      "price": 11.12,
+      "change_pct": 2.02,
+      "volume": 1127147.0,
       "turnover": 0,
-      "high": 11.11,
-      "low": 10.55,
-      "open": 11.01
+      "high": 11.55,
+      "low": 10.83,
+      "open": 11.02
     },
     {
       "code": "600483",
       "name": "福能股份",
-      "price": 11.14,
-      "change_pct": -2.28,
-      "volume": 260464.0,
+      "price": 11.17,
+      "change_pct": 0.27,
+      "volume": 223567.0,
       "turnover": 0,
-      "high": 11.3,
-      "low": 11.01,
-      "open": 11.2
+      "high": 11.31,
+      "low": 10.9,
+      "open": 11.06
     },
     {
       "code": "600553",
