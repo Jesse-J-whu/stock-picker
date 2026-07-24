@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-07-23 09:44:06",
+  "update_time": "2026-07-24 09:39:28",
   "strategy": "周线爆发",
   "count": 3,
   "stocks": [
@@ -17,13 +17,13 @@
     {
       "code": "600428",
       "name": "中远海特",
-      "price": 11.04,
-      "change_pct": -0.72,
-      "volume": 677394.0,
+      "price": 10.69,
+      "change_pct": -3.17,
+      "volume": 620748.0,
       "turnover": 0,
-      "high": 11.13,
-      "low": 10.78,
-      "open": 10.96
+      "high": 11.25,
+      "low": 10.69,
+      "open": 11.0
     },
     {
       "code": "600553",
