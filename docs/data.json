@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-07-30 09:46:36",
+  "update_time": "2026-07-31 10:03:22",
   "strategy": "周线爆发",
-  "count": 4,
+  "count": 5,
   "stocks": [
     {
       "code": "600263",
@@ -16,25 +16,25 @@
     },
     {
       "code": "600428",
-      "name": "XD中远海",
-      "price": 10.98,
-      "change_pct": 0.55,
-      "volume": 674778.0,
+      "name": "中远海特",
+      "price": 11.31,
+      "change_pct": 3.01,
+      "volume": 725213.0,
       "turnover": 0,
-      "high": 11.5,
-      "low": 10.84,
-      "open": 11.01
+      "high": 11.49,
+      "low": 10.51,
+      "open": 10.51
     },
     {
       "code": "600483",
       "name": "福能股份",
-      "price": 10.96,
-      "change_pct": -1.08,
-      "volume": 119159.0,
+      "price": 10.87,
+      "change_pct": -0.82,
+      "volume": 133993.0,
       "turnover": 0,
-      "high": 11.15,
-      "low": 10.82,
-      "open": 11.05
+      "high": 11.07,
+      "low": 10.85,
+      "open": 10.87
     },
     {
       "code": "600553",
@@ -46,6 +46,17 @@
       "high": 0.0,
       "low": 0.0,
       "open": 0.0
+    },
+    {
+      "code": "603679",
+      "name": "华体科技",
+      "price": 19.3,
+      "change_pct": 9.91,
+      "volume": 107987.0,
+      "turnover": 0,
+      "high": 19.32,
+      "low": 17.99,
+      "open": 18.25
     }
   ]
 }
