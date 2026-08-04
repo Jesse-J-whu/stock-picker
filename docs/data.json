@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-08-03 10:58:39",
+  "update_time": "2026-08-04 09:57:35",
   "strategy": "周线爆发",
-  "count": 2,
+  "count": 3,
   "stocks": [
     {
       "code": "600263",
@@ -24,6 +24,17 @@
       "high": 0.0,
       "low": 0.0,
       "open": 0.0
+    },
+    {
+      "code": "603679",
+      "name": "华体科技",
+      "price": 21.58,
+      "change_pct": 2.32,
+      "volume": 168107.0,
+      "turnover": 0,
+      "high": 21.98,
+      "low": 20.31,
+      "open": 21.2
     }
   ]
 }
