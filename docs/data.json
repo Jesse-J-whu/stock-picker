@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-08-04 09:57:35",
+  "update_time": "2026-08-05 09:50:46",
   "strategy": "周线爆发",
-  "count": 3,
+  "count": 4,
   "stocks": [
     {
       "code": "600263",
@@ -28,13 +28,24 @@
     {
       "code": "603679",
       "name": "华体科技",
-      "price": 21.58,
-      "change_pct": 2.32,
-      "volume": 168107.0,
+      "price": 21.73,
+      "change_pct": 0.7,
+      "volume": 122226.0,
       "turnover": 0,
-      "high": 21.98,
-      "low": 20.31,
-      "open": 21.2
+      "high": 21.92,
+      "low": 21.22,
+      "open": 21.61
+    },
+    {
+      "code": "603682",
+      "name": "锦和商管",
+      "price": 11.01,
+      "change_pct": 8.15,
+      "volume": 447440.0,
+      "turnover": 0,
+      "high": 11.1,
+      "low": 9.81,
+      "open": 10.1
     }
   ]
 }
