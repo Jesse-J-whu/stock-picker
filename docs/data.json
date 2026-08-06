@@ -1,8 +1,19 @@
 {
-  "update_time": "2026-08-05 09:50:46",
+  "update_time": "2026-08-06 09:55:56",
   "strategy": "周线爆发",
-  "count": 4,
+  "count": 5,
   "stocks": [
+    {
+      "code": "300311",
+      "name": "任子行",
+      "price": 7.16,
+      "change_pct": 19.93,
+      "volume": 1688667.0,
+      "turnover": 0,
+      "high": 7.16,
+      "low": 5.8,
+      "open": 5.8
+    },
     {
       "code": "600263",
       "name": "路桥建设",
@@ -28,24 +39,24 @@
     {
       "code": "603679",
       "name": "华体科技",
-      "price": 21.73,
-      "change_pct": 0.7,
-      "volume": 122226.0,
+      "price": 22.63,
+      "change_pct": 4.14,
+      "volume": 159559.0,
       "turnover": 0,
-      "high": 21.92,
-      "low": 21.22,
-      "open": 21.61
+      "high": 23.2,
+      "low": 21.62,
+      "open": 21.9
     },
     {
       "code": "603682",
       "name": "锦和商管",
-      "price": 11.01,
-      "change_pct": 8.15,
-      "volume": 447440.0,
+      "price": 11.4,
+      "change_pct": 3.54,
+      "volume": 340837.0,
       "turnover": 0,
-      "high": 11.1,
-      "low": 9.81,
-      "open": 10.1
+      "high": 11.42,
+      "low": 10.51,
+      "open": 10.7
     }
   ]
 }
