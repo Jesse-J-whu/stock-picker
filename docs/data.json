@@ -1,29 +1,29 @@
 {
-  "update_time": "2026-08-07 08:26:36",
+  "update_time": "2026-08-10 08:41:04",
   "strategy": "周线爆发",
-  "count": 6,
+  "count": 5,
   "stocks": [
+    {
+      "code": "002346",
+      "name": "柘中股份",
+      "price": 20.77,
+      "change_pct": 1.47,
+      "volume": 57686.0,
+      "turnover": 0,
+      "high": 20.79,
+      "low": 20.05,
+      "open": 20.5
+    },
     {
       "code": "300311",
       "name": "任子行",
-      "price": 6.69,
-      "change_pct": -6.56,
-      "volume": 1602691.0,
+      "price": 6.57,
+      "change_pct": -1.79,
+      "volume": 913273.0,
       "turnover": 0,
-      "high": 6.94,
-      "low": 6.26,
-      "open": 6.6
-    },
-    {
-      "code": "300483",
-      "name": "首华燃气",
-      "price": 23.29,
-      "change_pct": 0.91,
-      "volume": 139813.0,
-      "turnover": 0,
-      "high": 23.79,
-      "low": 22.62,
-      "open": 23.1
+      "high": 6.77,
+      "low": 6.44,
+      "open": 6.72
     },
     {
       "code": "600263",
@@ -48,26 +48,15 @@
       "open": 0.0
     },
     {
-      "code": "603679",
-      "name": "华体科技",
-      "price": 22.57,
-      "change_pct": -0.27,
-      "volume": 103019.0,
-      "turnover": 0,
-      "high": 23.62,
-      "low": 22.0,
-      "open": 22.45
-    },
-    {
       "code": "603682",
       "name": "锦和商管",
-      "price": 11.28,
-      "change_pct": -1.05,
-      "volume": 268978.0,
+      "price": 11.58,
+      "change_pct": 2.66,
+      "volume": 271781.0,
       "turnover": 0,
-      "high": 11.84,
-      "low": 11.11,
-      "open": 11.37
+      "high": 11.59,
+      "low": 10.69,
+      "open": 11.02
     }
   ]
 }
