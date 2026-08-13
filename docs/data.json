@@ -1,40 +1,51 @@
 {
-  "update_time": "2026-08-12 08:32:35",
+  "update_time": "2026-08-13 08:34:24",
   "strategy": "周线爆发",
-  "count": 6,
+  "count": 9,
   "stocks": [
     {
       "code": "002346",
       "name": "柘中股份",
-      "price": 21.44,
-      "change_pct": 3.33,
-      "volume": 62621.0,
+      "price": 21.61,
+      "change_pct": 0.79,
+      "volume": 71972.0,
       "turnover": 0,
-      "high": 21.54,
-      "low": 20.53,
-      "open": 20.7
+      "high": 21.99,
+      "low": 21.26,
+      "open": 21.6
     },
     {
       "code": "300197",
       "name": "节能铁汉",
-      "price": 2.3,
-      "change_pct": 19.79,
-      "volume": 2956453.0,
+      "price": 2.28,
+      "change_pct": -0.87,
+      "volume": 4207038.0,
       "turnover": 0,
-      "high": 2.3,
-      "low": 1.9,
-      "open": 1.91
+      "high": 2.46,
+      "low": 2.21,
+      "open": 2.26
     },
     {
       "code": "300311",
       "name": "任子行",
-      "price": 6.4,
-      "change_pct": -2.44,
-      "volume": 790038.0,
+      "price": 6.08,
+      "change_pct": -5.0,
+      "volume": 821319.0,
       "turnover": 0,
-      "high": 6.55,
-      "low": 6.29,
-      "open": 6.43
+      "high": 6.48,
+      "low": 6.08,
+      "open": 6.34
+    },
+    {
+      "code": "300453",
+      "name": "三鑫医疗",
+      "price": 10.02,
+      "change_pct": 5.7,
+      "volume": 349689.0,
+      "turnover": 0,
+      "high": 10.09,
+      "low": 9.41,
+      "open": 9.55
     },
     {
       "code": "600263",
@@ -59,15 +70,37 @@
       "open": 0.0
     },
     {
+      "code": "601886",
+      "name": "江河集团",
+      "price": 11.53,
+      "change_pct": 10.02,
+      "volume": 456034.0,
+      "turnover": 0,
+      "high": 11.53,
+      "low": 10.1,
+      "open": 10.44
+    },
+    {
+      "code": "603466",
+      "name": "风语筑",
+      "price": 13.72,
+      "change_pct": 10.02,
+      "volume": 1428297.0,
+      "turnover": 0,
+      "high": 13.72,
+      "low": 12.1,
+      "open": 12.3
+    },
+    {
       "code": "603682",
       "name": "锦和商管",
-      "price": 12.31,
-      "change_pct": 4.32,
-      "volume": 223600.0,
+      "price": 13.16,
+      "change_pct": 6.9,
+      "volume": 287938.0,
       "turnover": 0,
-      "high": 12.54,
-      "low": 11.66,
-      "open": 11.8
+      "high": 13.43,
+      "low": 12.36,
+      "open": 12.36
     }
   ]
 }
