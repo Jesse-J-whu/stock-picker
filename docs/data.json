@@ -1,51 +1,40 @@
 {
-  "update_time": "2026-08-14 08:33:02",
+  "update_time": "2026-08-17 08:08:39",
   "strategy": "周线爆发",
   "count": 8,
   "stocks": [
     {
       "code": "002346",
       "name": "柘中股份",
-      "price": 22.33,
-      "change_pct": 3.33,
-      "volume": 59620.0,
+      "price": 24.33,
+      "change_pct": 8.96,
+      "volume": 232257.0,
       "turnover": 0,
-      "high": 22.36,
-      "low": 21.39,
-      "open": 21.49
+      "high": 24.56,
+      "low": 22.4,
+      "open": 22.6
     },
     {
-      "code": "300197",
-      "name": "节能铁汉",
-      "price": 2.18,
-      "change_pct": -4.39,
-      "volume": 2181649.0,
+      "code": "300313",
+      "name": "天山生物",
+      "price": 10.73,
+      "change_pct": 20.02,
+      "volume": 249244.0,
       "turnover": 0,
-      "high": 2.34,
-      "low": 2.15,
-      "open": 2.29
+      "high": 10.73,
+      "low": 9.02,
+      "open": 9.09
     },
     {
-      "code": "300311",
-      "name": "任子行",
-      "price": 6.26,
-      "change_pct": 2.96,
-      "volume": 836740.0,
+      "code": "300483",
+      "name": "首华燃气",
+      "price": 23.31,
+      "change_pct": 1.83,
+      "volume": 72365.0,
       "turnover": 0,
-      "high": 6.26,
-      "low": 5.82,
-      "open": 6.1
-    },
-    {
-      "code": "300453",
-      "name": "三鑫医疗",
-      "price": 10.08,
-      "change_pct": 0.6,
-      "volume": 260705.0,
-      "turnover": 0,
-      "high": 10.22,
-      "low": 9.91,
-      "open": 9.97
+      "high": 23.4,
+      "low": 22.71,
+      "open": 23.27
     },
     {
       "code": "600263",
@@ -70,26 +59,37 @@
       "open": 0.0
     },
     {
-      "code": "601886",
-      "name": "江河集团",
-      "price": 11.75,
-      "change_pct": 1.91,
-      "volume": 461491.0,
+      "code": "600851",
+      "name": "海欣股份",
+      "price": 9.02,
+      "change_pct": 3.68,
+      "volume": 129497.0,
       "turnover": 0,
-      "high": 12.08,
-      "low": 10.82,
-      "open": 11.53
+      "high": 9.04,
+      "low": 8.57,
+      "open": 8.62
     },
     {
-      "code": "603682",
-      "name": "锦和商管",
-      "price": 11.84,
-      "change_pct": -10.03,
-      "volume": 401777.0,
+      "code": "601886",
+      "name": "江河集团",
+      "price": 12.75,
+      "change_pct": 8.51,
+      "volume": 464768.0,
       "turnover": 0,
-      "high": 13.6,
-      "low": 11.84,
-      "open": 13.0
+      "high": 12.9,
+      "low": 11.56,
+      "open": 11.96
+    },
+    {
+      "code": "603082",
+      "name": "北自科技",
+      "price": 44.17,
+      "change_pct": 10.01,
+      "volume": 49401.0,
+      "turnover": 0,
+      "high": 44.17,
+      "low": 40.66,
+      "open": 40.85
     }
   ]
 }
