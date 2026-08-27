@@ -1,6 +1,62 @@
 {
-  "update_time": "2026-08-26 07:53:56",
+  "update_time": "2026-08-27 14:12:57",
   "strategy": "周线爆发",
-  "count": 0,
-  "stocks": []
+  "count": 5,
+  "stocks": [
+    {
+      "code": "300142",
+      "name": "300142",
+      "price": 15.58,
+      "change_pct": 2.1,
+      "volume": 2854627.44,
+      "turnover": 4302250.59101,
+      "high": 15.66,
+      "low": 14.66,
+      "open": 15.12
+    },
+    {
+      "code": "300313",
+      "name": "300313",
+      "price": 16.64,
+      "change_pct": 7.01,
+      "volume": 428733.56,
+      "turnover": 698852.74621,
+      "high": 16.8,
+      "low": 15.25,
+      "open": 15.53
+    },
+    {
+      "code": "600851",
+      "name": "600851",
+      "price": 8.7,
+      "change_pct": 1.28,
+      "volume": 108699.0,
+      "turnover": 95242.191,
+      "high": 8.94,
+      "low": 8.62,
+      "open": 8.62
+    },
+    {
+      "code": "601886",
+      "name": "601886",
+      "price": 13.32,
+      "change_pct": 2.62,
+      "volume": 257475.0,
+      "turnover": 340044.252,
+      "high": 13.38,
+      "low": 12.88,
+      "open": 12.98
+    },
+    {
+      "code": "603838",
+      "name": "603838",
+      "price": 13.31,
+      "change_pct": 3.74,
+      "volume": 54007.82,
+      "turnover": 70008.998,
+      "high": 13.58,
+      "low": 12.58,
+      "open": 12.58
+    }
+  ]
 }
