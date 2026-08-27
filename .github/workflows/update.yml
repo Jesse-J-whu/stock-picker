@@ -25,11 +25,21 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
+      - name: Restore market-data cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/
+          key: tushare-daily-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            tushare-daily-${{ runner.os }}-
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
       - name: Run strategy
         run: python strategy.py
+        env:
+          TUSHARE_TOKEN: ${{ secrets.TUSHARE_TOKEN }}
 
       - name: Commit and push results
         run: |

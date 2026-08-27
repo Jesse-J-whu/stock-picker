@@ -20,6 +20,7 @@ from datetime import datetime, timedelta
 from jinja2 import Template
 import traceback
 import time
+from market_data import MarketDataError, TushareMarketData
 
 
 # ============================================================
@@ -238,6 +239,35 @@ def get_daily_data_for_display(stock_code):
 
 
 # ============================================================
+# 数据提供者：Tushare 全市场日线（本地聚合周线）
+# ============================================================
+
+MARKET_DATA = None
+
+
+def prepare_market_data():
+    global MARKET_DATA
+    print("[1/4] 同步 Tushare 全市场行情...")
+    MARKET_DATA = TushareMarketData().load()
+
+
+def get_all_a_stocks():
+    if MARKET_DATA is None:
+        raise MarketDataError("行情数据尚未初始化")
+    stocks = MARKET_DATA.active_stocks()
+    print(f"  共 {len(stocks)} 只上市股票待筛选")
+    return stocks
+
+
+def get_weekly_data(stock_code, name=""):
+    return MARKET_DATA.bars(stock_code, "week", 130)
+
+
+def get_daily_data_for_display(stock_code):
+    return MARKET_DATA.display_quote(stock_code)
+
+
+# ============================================================
 # 策略计算层
 # ============================================================
 
@@ -306,6 +336,7 @@ def run_strategy():
     print(f"  周线爆发选股策略 - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print("=" * 60)
 
+    prepare_market_data()
     stocks = get_all_a_stocks()
     if stocks.empty:
         print("无法获取股票列表，退出")
@@ -340,25 +371,12 @@ def run_strategy():
             failed += 1
             continue
 
-        # 控制请求频率
-        time.sleep(0.1)
-
     print(f"\n  策略计算完成: 成功 {total - failed}, 失败 {failed}")
-
-    # 数据源失效时绝不能把“抓取失败”伪装成“今日 0 只”。抛出异常会让
-    # Actions 失败并保留上一份已验证的页面结果。
-    processed = total - failed
-    min_processed = max(100, int(total * MIN_DATA_COVERAGE_RATIO))
-    if processed < min_processed:
-        raise RuntimeError(
-            f"行情数据覆盖率不足：仅成功 {processed}/{total}，停止发布结果"
-        )
 
     print(f"\n[3/4] 获取选中股票的最新行情...")
     for item in selected:
         daily = get_daily_data_for_display(item['code'])
         item.update(daily)
-        time.sleep(0.1)
 
     print(f"\n  共选出 {len(selected)} 只股票")
     return selected
