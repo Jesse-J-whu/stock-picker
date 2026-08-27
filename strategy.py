@@ -33,6 +33,22 @@ HEADERS = {
 SESSION = requests.Session()
 SESSION.headers.update(HEADERS)
 
+# 腾讯接口仍会为部分退市代码返回多年前的最后一根 K 线。不能把这种
+# 历史快照当作当天行情，否则技术指标会产生看似有效的假信号。
+MAX_KLINE_STALENESS_DAYS = 14
+MIN_DATA_COVERAGE_RATIO = 0.80
+
+
+def has_recent_kline(df, max_staleness_days=MAX_KLINE_STALENESS_DAYS):
+    """确认 K 线末日期足够新，排除退市或长期停止更新的代码。"""
+    if df.empty or 'date' not in df:
+        return False
+    try:
+        last_date = pd.to_datetime(df['date'].iloc[-1]).date()
+    except (TypeError, ValueError):
+        return False
+    return last_date >= (datetime.now().date() - timedelta(days=max_staleness_days))
+
 
 # ============================================================
 # 数据获取层 - 腾讯财经接口（国内外均可访问，无频率限制）
@@ -175,6 +191,8 @@ def get_weekly_data(stock_code, name=""):
 
         df = pd.DataFrame(rows)
         df = df.sort_values('date').reset_index(drop=True)
+        if not has_recent_kline(df):
+            return pd.DataFrame()
         return df
     except Exception:
         return pd.DataFrame()
@@ -326,6 +344,15 @@ def run_strategy():
         time.sleep(0.1)
 
     print(f"\n  策略计算完成: 成功 {total - failed}, 失败 {failed}")
+
+    # 数据源失效时绝不能把“抓取失败”伪装成“今日 0 只”。抛出异常会让
+    # Actions 失败并保留上一份已验证的页面结果。
+    processed = total - failed
+    min_processed = max(100, int(total * MIN_DATA_COVERAGE_RATIO))
+    if processed < min_processed:
+        raise RuntimeError(
+            f"行情数据覆盖率不足：仅成功 {processed}/{total}，停止发布结果"
+        )
 
     print(f"\n[3/4] 获取选中股票的最新行情...")
     for item in selected:
