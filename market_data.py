@@ -167,7 +167,7 @@ class TushareMarketData:
         latest = bars.iloc[-1]
         previous = float(latest["pre_close"])
         close = float(latest["close"])
-        return {
+        quote = {
             "price": close,
             "change_pct": round((close - previous) / previous * 100, 2) if previous else 0,
             "volume": float(latest["vol"]),
@@ -176,3 +176,17 @@ class TushareMarketData:
             "low": float(latest["low"]),
             "open": float(latest["open"]),
         }
+        # 名称仅为最终入选的少量标的补查；不再对全市场调用受限的名称接口。
+        ts_code = self.stocks.loc[self.stocks["symbol"] == stock_code, "ts_code"]
+        if not ts_code.empty:
+            suffix = ts_code.iloc[0].split(".")[-1]
+            prefix = {"SH": "sh", "SZ": "sz", "BJ": "bj"}.get(suffix)
+            if prefix:
+                try:
+                    response = self.session.get(f"https://qt.gtimg.cn/q={prefix}{stock_code}", timeout=10)
+                    parts = response.text.split('"')[1].split("~")
+                    if len(parts) > 1 and parts[1].strip():
+                        quote["name"] = parts[1].strip()
+                except (IndexError, requests.RequestException):
+                    pass
+        return quote
