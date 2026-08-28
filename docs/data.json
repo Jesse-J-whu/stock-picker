@@ -1,62 +1,40 @@
 {
-  "update_time": "2026-08-28 03:00:35",
+  "update_time": "2026-08-28 20:23:56",
   "strategy": "周线爆发",
-  "count": 5,
+  "count": 3,
   "stocks": [
     {
-      "code": "300142",
-      "name": "沃森生物",
-      "price": 15.58,
-      "change_pct": 2.1,
-      "volume": 2854627.44,
-      "turnover": 4302250.59101,
-      "high": 15.66,
-      "low": 14.66,
-      "open": 15.12
+      "code": "002072",
+      "name": "凯瑞德",
+      "price": 9.31,
+      "change_pct": 4.61,
+      "volume": 681085.23,
+      "turnover": 613289.57952,
+      "high": 9.79,
+      "low": 8.31,
+      "open": 8.9
     },
     {
       "code": "300313",
       "name": "天山生物",
-      "price": 16.64,
-      "change_pct": 7.01,
-      "volume": 428733.56,
-      "turnover": 698852.74621,
-      "high": 16.8,
-      "low": 15.25,
-      "open": 15.53
-    },
-    {
-      "code": "600851",
-      "name": "海欣股份",
-      "price": 8.7,
-      "change_pct": 1.28,
-      "volume": 108699.0,
-      "turnover": 95242.191,
-      "high": 8.94,
-      "low": 8.62,
-      "open": 8.62
+      "price": 15.35,
+      "change_pct": -7.75,
+      "volume": 370968.56,
+      "turnover": 587330.40413,
+      "high": 16.39,
+      "low": 15.28,
+      "open": 16.19
     },
     {
       "code": "601886",
       "name": "江河集团",
-      "price": 13.32,
-      "change_pct": 2.62,
-      "volume": 257475.0,
-      "turnover": 340044.252,
-      "high": 13.38,
-      "low": 12.88,
-      "open": 12.98
-    },
-    {
-      "code": "603838",
-      "name": "*ST四通",
-      "price": 13.31,
-      "change_pct": 3.74,
-      "volume": 54007.82,
-      "turnover": 70008.998,
-      "high": 13.58,
-      "low": 12.58,
-      "open": 12.58
+      "price": 12.91,
+      "change_pct": -3.08,
+      "volume": 180981.02,
+      "turnover": 235427.375,
+      "high": 13.55,
+      "low": 12.81,
+      "open": 13.44
     }
   ]
 }
