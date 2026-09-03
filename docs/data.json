@@ -1,62 +1,62 @@
 {
-  "update_time": "2026-09-02 13:01:13",
+  "update_time": "2026-09-03 13:04:11",
   "strategy": "周线爆发",
   "count": 5,
   "stocks": [
     {
       "code": "002072",
       "name": "凯瑞德",
-      "price": 9.06,
+      "price": 9.04,
       "change_pct": -0.22,
-      "volume": 193238.08,
-      "turnover": 174216.4156,
-      "high": 9.12,
-      "low": 8.85,
-      "open": 8.92
+      "volume": 198531.0,
+      "turnover": 182555.159,
+      "high": 9.49,
+      "low": 9.04,
+      "open": 9.08
     },
     {
       "code": "300097",
       "name": "智云股份",
-      "price": 10.18,
-      "change_pct": -0.97,
-      "volume": 128664.3,
-      "turnover": 130018.9391,
-      "high": 10.3,
-      "low": 9.9,
-      "open": 10.25
+      "price": 10.49,
+      "change_pct": 3.05,
+      "volume": 167590.0,
+      "turnover": 174938.307,
+      "high": 10.75,
+      "low": 10.0,
+      "open": 10.4
     },
     {
       "code": "300313",
       "name": "天山生物",
-      "price": 14.58,
-      "change_pct": -3.7,
-      "volume": 335220.01,
-      "turnover": 481136.77412,
-      "high": 14.99,
-      "low": 13.8,
-      "open": 14.8
+      "price": 13.51,
+      "change_pct": -7.34,
+      "volume": 308882.0,
+      "turnover": 427116.725,
+      "high": 14.51,
+      "low": 13.2,
+      "open": 14.51
     },
     {
       "code": "600851",
       "name": "海欣股份",
-      "price": 8.57,
-      "change_pct": -1.83,
-      "volume": 76429.0,
-      "turnover": 65580.34,
+      "price": 8.63,
+      "change_pct": 0.7,
+      "volume": 60792.49,
+      "turnover": 52618.861,
       "high": 8.71,
-      "low": 8.5,
-      "open": 8.71
+      "low": 8.55,
+      "open": 8.55
     },
     {
-      "code": "603339",
-      "name": "四方科技",
-      "price": 15.46,
-      "change_pct": -3.86,
-      "volume": 312552.88,
-      "turnover": 484574.367,
-      "high": 16.08,
-      "low": 15.32,
-      "open": 16.05
+      "code": "601609",
+      "name": "金田股份",
+      "price": 13.81,
+      "change_pct": 2.6,
+      "volume": 636761.93,
+      "turnover": 870506.838,
+      "high": 13.92,
+      "low": 13.36,
+      "open": 13.6
     }
   ]
 }
