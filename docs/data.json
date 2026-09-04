@@ -1,62 +1,18 @@
 {
-  "update_time": "2026-09-03 13:04:11",
+  "update_time": "2026-09-04 12:56:50",
   "strategy": "周线爆发",
-  "count": 5,
+  "count": 1,
   "stocks": [
-    {
-      "code": "002072",
-      "name": "凯瑞德",
-      "price": 9.04,
-      "change_pct": -0.22,
-      "volume": 198531.0,
-      "turnover": 182555.159,
-      "high": 9.49,
-      "low": 9.04,
-      "open": 9.08
-    },
-    {
-      "code": "300097",
-      "name": "智云股份",
-      "price": 10.49,
-      "change_pct": 3.05,
-      "volume": 167590.0,
-      "turnover": 174938.307,
-      "high": 10.75,
-      "low": 10.0,
-      "open": 10.4
-    },
     {
       "code": "300313",
       "name": "天山生物",
-      "price": 13.51,
-      "change_pct": -7.34,
-      "volume": 308882.0,
-      "turnover": 427116.725,
-      "high": 14.51,
-      "low": 13.2,
-      "open": 14.51
-    },
-    {
-      "code": "600851",
-      "name": "海欣股份",
-      "price": 8.63,
-      "change_pct": 0.7,
-      "volume": 60792.49,
-      "turnover": 52618.861,
-      "high": 8.71,
-      "low": 8.55,
-      "open": 8.55
-    },
-    {
-      "code": "601609",
-      "name": "金田股份",
-      "price": 13.81,
-      "change_pct": 2.6,
-      "volume": 636761.93,
-      "turnover": 870506.838,
-      "high": 13.92,
-      "low": 13.36,
-      "open": 13.6
+      "price": 14.39,
+      "change_pct": 6.51,
+      "volume": 311321.71,
+      "turnover": 437004.42965,
+      "high": 14.43,
+      "low": 13.33,
+      "open": 13.69
     }
   ]
 }
