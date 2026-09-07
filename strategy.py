@@ -649,6 +649,8 @@ def save_data_json(selected_stocks, output_path):
     data = {
         'update_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'strategy': '周线爆发',
+        'adjustment': 'qfq',
+        'data_source': 'Tushare',
         'count': len(selected_stocks),
         'stocks': selected_stocks,
     }
