@@ -1,18 +1,6 @@
 {
-  "update_time": "2026-09-04 12:56:50",
+  "update_time": "2026-09-07 14:27:18",
   "strategy": "周线爆发",
-  "count": 1,
-  "stocks": [
-    {
-      "code": "300313",
-      "name": "天山生物",
-      "price": 14.39,
-      "change_pct": 6.51,
-      "volume": 311321.71,
-      "turnover": 437004.42965,
-      "high": 14.43,
-      "low": 13.33,
-      "open": 13.69
-    }
-  ]
+  "count": 0,
+  "stocks": []
 }
