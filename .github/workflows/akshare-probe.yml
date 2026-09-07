@@ -1,0 +1,29 @@
+name: AKShare forward-adjusted data probe
+on:
+  workflow_dispatch:
+    inputs:
+      expected_date:
+        description: Expected completed trading date (YYYY-MM-DD)
+        required: true
+        default: '2026-09-07'
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install akshare==1.18.35
+      - name: Test two uncached passes, no retries
+        run: python scripts/akshare_probe.py
+        env:
+          EXPECTED_DATE: ${{ inputs.expected_date }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: akshare-probe-report
+          path: akshare-probe-report.json
