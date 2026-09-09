@@ -2,9 +2,10 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from datetime import date
 from unittest.mock import patch
 import pandas as pd
-from qfq_data import validate_history, aggregate, AkshareMarketData
+from qfq_data import validate_history, aggregate, AkshareMarketData, reference_day
 from market_data import MarketDataError
 import strategy
 
@@ -16,6 +17,15 @@ def frame():
 
 
 class DataTests(unittest.TestCase):
+    def test_calendar_weekend(self):
+        cal = pd.DataFrame({"trade_date": ["2026-09-04", "2026-09-07"]})
+        self.assertEqual(reference_day(cal, date(2026, 9, 6)), "20260904")
+
+    def test_calendar_stale_fails_closed(self):
+        cal = pd.DataFrame({"trade_date": ["2026-09-04"]})
+        with self.assertRaises(MarketDataError):
+            reference_day(cal, date(2026, 9, 9))
+
     def test_valid(self):
         self.assertEqual(len(validate_history(frame(), "2026-09-09", 13)), 3)
 
@@ -78,4 +88,3 @@ class DataTests(unittest.TestCase):
             self.assertEqual(result["timezone"], "Asia/Shanghai")
             self.assertEqual(result["trade_date"], "2026-09-09")
             self.assertEqual(result["data_quality"]["strategy_counts"]["errors"], 0)
-

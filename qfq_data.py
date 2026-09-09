@@ -22,6 +22,16 @@ def beijing_now():
     return datetime.now(ZoneInfo("Asia/Shanghai"))
 
 
+def reference_day(calendar, end):
+    dates = pd.to_datetime(calendar["trade_date"], errors="raise").dt.date
+    if dates.empty or dates.max() < end:
+        raise MarketDataError("Trading calendar does not cover requested date")
+    eligible = dates[dates <= end]
+    if eligible.empty:
+        raise MarketDataError("No reference trading date")
+    return max(eligible).strftime("%Y%m%d")
+
+
 def validate_history(frame, expected_date, reference_close):
     required = ["date", "open", "close", "high", "low", "vol"]
     if frame.empty or not set(required).issubset(frame.columns):
@@ -98,12 +108,11 @@ class AkshareMarketData:
         now = beijing_now()
         # Before settlement use the preceding day, including manual morning runs.
         end = now.date() if now.hour >= 16 else now.date() - timedelta(days=1)
-        cal = self.request("trade_cal", {
-            "exchange": "SSE", "start_date": (end - timedelta(days=20)).strftime("%Y%m%d"),
-            "end_date": end.strftime("%Y%m%d"), "is_open": "1"}, "cal_date,is_open")
-        if cal.empty:
-            raise MarketDataError("No reference trading date")
-        day = max(cal["cal_date"].astype(str))
+        import akshare as ak
+        # Independent calendar: the shared Tushare token permits only one calendar call/hour.
+        # Never treat an empty daily response as proof of a holiday.
+        cal = ak.tool_trade_date_hist_sina()
+        day = reference_day(cal, end)
         self.trade_date = datetime.strptime(day, "%Y%m%d").strftime("%Y-%m-%d")
         raw = self.request("daily", {"trade_date": day},
                            "ts_code,trade_date,open,high,low,close,pre_close,vol,amount")
@@ -215,4 +224,3 @@ class AkshareMarketData:
         return (f"行情日期 {self.trade_date} · 前复权 · 覆盖 {len(self.frames)}/{len(self.raw)} · "
                 f"已计算 {self.stats['evaluated']} · 历史不足 {self.stats['insufficient_history']} · "
                 "沪深当日交易股票（不含北交所/停牌/ST） · 周/月含未结束周期")
-
