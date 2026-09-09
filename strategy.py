@@ -20,7 +20,8 @@ from datetime import datetime, timedelta
 from jinja2 import Template
 import traceback
 import time
-from market_data import MarketDataError, TushareMarketData
+from market_data import MarketDataError
+from qfq_data import AkshareMarketData, SOURCE, beijing_now
 
 
 # ============================================================
@@ -247,8 +248,8 @@ MARKET_DATA = None
 
 def prepare_market_data():
     global MARKET_DATA
-    print("[1/4] 同步 Tushare 全市场行情...")
-    MARKET_DATA = TushareMarketData().load()
+    print("[1/4] 同步并校验 AKShare 前复权行情...")
+    MARKET_DATA = AkshareMarketData().load()
 
 
 def get_all_a_stocks():
@@ -355,21 +356,23 @@ def run_strategy():
             print(f"  进度: {idx}/{total} ({idx/total*100:.1f}%)")
 
         df = get_weekly_data(code, name)
-        if df.empty:
+        if df.empty or len(df) < 30:
             failed += 1
+            MARKET_DATA.stats["insufficient_history"] += 1
             continue
 
         try:
             signal = apply_strategy(df)
+            MARKET_DATA.stats["evaluated"] += 1
             if signal.iloc[-1]:
                 selected.append({
                     'code': code,
                     'name': name,
                 })
                 print(f"  ★ 选中: {code} {name}")
-        except Exception:
-            failed += 1
-            continue
+        except Exception as error:
+            MARKET_DATA.stats["errors"] += 1
+            raise MarketDataError(f"策略计算异常 {code}，禁止发布") from error
 
     print(f"\n  策略计算完成: 成功 {total - failed}, 失败 {failed}")
 
@@ -572,6 +575,17 @@ body {
     <div class="strategy-tag">BOLL扩张 + 放量 + MACD零上金叉</div>
 </div>
 
+<div class="disclaimer" id="data-status">
+    {{ data_status }}<br>价格：前复权；放量指标：成交量（非成交额）。
+    <br><span id="freshness-warning"></span>
+</div>
+<script>
+const dataDay = "{{ data_status }}".match(/\d{4}-\d{2}-\d{2}/);
+if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400000) {
+  document.getElementById("freshness-warning").textContent =
+    "提示：行情日期距今超过4天，可能为休市或任务未更新，请核对运行状态。";
+}
+</script>
 <div class="disclaimer">
     本页面仅为量化策略筛选结果展示，不构成任何投资建议。股市有风险，投资需谨慎。
 </div>
@@ -635,7 +649,8 @@ body {
     html = template.render(
         stocks=selected_stocks,
         stock_count=len(selected_stocks),
-        update_time=datetime.now().strftime('%Y年%m月%d日 %H:%M 更新'),
+        update_time=beijing_now().strftime('%Y年%m月%d日 %H:%M 北京时间更新'),
+        data_status=MARKET_DATA.page_status(),
     )
 
     os.makedirs(os.path.dirname(output_path) if os.path.dirname(output_path) else '.', exist_ok=True)
@@ -647,10 +662,13 @@ body {
 def save_data_json(selected_stocks, output_path):
     """保存选股结果为JSON"""
     data = {
-        'update_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'update_time': beijing_now().strftime('%Y-%m-%d %H:%M:%S'),
+        'timezone': 'Asia/Shanghai',
+        'trade_date': MARKET_DATA.trade_date,
+        'data_quality': MARKET_DATA.metadata(),
         'strategy': '周线爆发',
         'adjustment': 'qfq',
-        'data_source': 'Tushare',
+        'data_source': SOURCE,
         'count': len(selected_stocks),
         'stocks': selected_stocks,
     }

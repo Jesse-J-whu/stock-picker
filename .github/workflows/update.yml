@@ -1,55 +1,72 @@
-name: 周线爆发选股 - 自动更新
-
+name: 前复权选股与自动网页
 on:
   schedule:
-    # 每个交易日北京时间16:30运行（UTC 08:30），避开收盘后的数据结算窗口
-    # 周一到周五每天运行
-    - cron: '30 8 * * 1-5'
-  workflow_dispatch:  # 支持手动触发
-
+    # Beijing 16:37, with a 21:37 retry using same-day validated cache.
+    - cron: '37 8,13 * * 1-5'
+  workflow_dispatch:
 permissions:
   contents: write
   pages: write
   id-token: write
-
+concurrency:
+  group: production-qfq
+  cancel-in-progress: false
 jobs:
   run-strategy:
     runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      PYTHONUNBUFFERED: '1'
+      QFQ_WORKERS: '4'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
-
-      - name: Restore market-data cache
-        uses: actions/cache@v4
+          cache: pip
+      - name: Same-day cache namespace
+        id: cache-date
+        run: echo "day=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@v4
         with:
-          path: .cache/
-          key: tushare-daily-${{ runner.os }}-${{ github.run_id }}
+          path: .cache/qfq-v2/
+          key: qfq-v2-${{ runner.os }}-${{ steps.cache-date.outputs.day }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
-            tushare-daily-${{ runner.os }}-
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run strategy
+            qfq-v2-${{ runner.os }}-${{ steps.cache-date.outputs.day }}-
+      - run: pip install -r requirements.txt
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Calculate validated forward-adjusted strategy
         run: python strategy.py
         env:
           TUSHARE_TOKEN: ${{ secrets.TUSHARE_TOKEN }}
-
-      - name: Commit and push results
+      - name: Save successful downloads even when publication is blocked
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/qfq-v2/
+          key: qfq-v2-${{ runner.os }}-${{ steps.cache-date.outputs.day }}-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Upload quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-quality
+          path: data-quality.json
+          if-no-files-found: warn
+      - name: Commit verified results
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/
-          git diff --staged --quiet || git commit -m "更新选股结果 $(date +'%Y-%m-%d')"
-          git fetch origin main
-          git rebase origin/main || git rebase --abort
-          git push || git push --force-with-lease
+          if ! git diff --cached --quiet; then
+            git commit -m "Update validated qfq screening results"
+            git pull --rebase origin main
+            git push
+          fi
+      - uses: actions/configure-pages@v4
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/
   deploy:
     needs: run-strategy
     runs-on: ubuntu-latest
@@ -57,19 +74,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: main
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'docs'
-
-      - name: Deploy to GitHub Pages
+      - name: Deploy the exact verified output
         id: deployment
         uses: actions/deploy-pages@v4
