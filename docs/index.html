@@ -178,12 +178,23 @@ body {
 <div class="header">
     <h1>周线爆发选股</h1>
     <div class="meta">
-        <span>2026年09月07日 14:27 更新</span>
+        <span>2026年09月10日 00:03 北京时间更新</span>
         <span class="count">0 只</span>
     </div>
     <div class="strategy-tag">BOLL扩张 + 放量 + MACD零上金叉</div>
 </div>
 
+<div class="disclaimer" id="data-status">
+    行情日期 2026-09-09 · 前复权 · 覆盖 5009/5009 · 已计算 4964 · 历史不足 45 · 沪深当日交易股票（不含北交所/停牌/ST） · 周/月含未结束周期<br>价格：前复权；放量指标：成交量（非成交额）。
+    <br><span id="freshness-warning"></span>
+</div>
+<script>
+const dataDay = "行情日期 2026-09-09 · 前复权 · 覆盖 5009/5009 · 已计算 4964 · 历史不足 45 · 沪深当日交易股票（不含北交所/停牌/ST） · 周/月含未结束周期".match(/\d{4}-\d{2}-\d{2}/);
+if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400000) {
+  document.getElementById("freshness-warning").textContent =
+    "提示：行情日期距今超过4天，可能为休市或任务未更新，请核对运行状态。";
+}
+</script>
 <div class="disclaimer">
     本页面仅为量化策略筛选结果展示，不构成任何投资建议。股市有风险，投资需谨慎。
 </div>
