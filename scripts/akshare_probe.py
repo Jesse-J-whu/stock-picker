@@ -1,7 +1,9 @@
 """Read-only live probe; never changes strategy results or uses secrets."""
 import hashlib
+import csv
 import json
 import os
+import random
 from pathlib import Path
 import subprocess
 import sys
@@ -13,6 +15,24 @@ SYMBOLS = [
     'sh600000', 'sh600036', 'sh600519', 'sh600900', 'sh601318',
     'sh601398', 'sh603259', 'sh603976', 'sh688008', 'sh688981',
 ]
+
+
+def choose_symbols(size, path=Path('.cache/tushare_stocks.csv')):
+    if not 20 <= size <= 100:
+        raise ValueError('sample_size must be between 20 and 100')
+    if size == 20:
+        return list(SYMBOLS)
+    with path.open(encoding='utf-8-sig', newline='') as handle:
+        rows = list(csv.DictReader(handle))
+    candidates = set()
+    for row in rows:
+        code = row.get('ts_code', '')
+        if code.endswith(('.SH', '.SZ')) and len(code) == 9:
+            candidates.add(code[-2:].lower() + code[:6])
+    extra = sorted(candidates - set(SYMBOLS))
+    if len(extra) < size - len(SYMBOLS):
+        raise ValueError('Stock-list snapshot too small; refusing invented stock codes')
+    return list(SYMBOLS) + random.Random(20260909).sample(extra, size - len(SYMBOLS))
 
 
 def fetch(symbol, expected):
@@ -48,10 +68,18 @@ def fetch(symbol, expected):
 
 def main():
     expected = os.environ['EXPECTED_DATE']
+    from datetime import date
+    date.fromisoformat(expected)
+    symbols = choose_symbols(int(os.environ.get('SAMPLE_SIZE', '20')))
+    Path('akshare-probe-manifest.json').write_text(json.dumps(dict(
+        expected_date=expected, symbols=symbols, seed=20260909,
+        selection='20 original samples plus random SH/SZ codes from cached stock list',
+        caveat='Cached stock list may be stale. No BJ coverage. Short/stale data requires review.',
+    ), indent=2), encoding='utf-8')
     results = []
     start = time.monotonic()
     for round_id in (1, 2):
-        for symbol in SYMBOLS:
+        for symbol in symbols:
             tick = time.monotonic()
             result = dict(round=round_id, symbol=symbol)
             try:
@@ -71,13 +99,15 @@ def main():
             Path('akshare-probe-report.json').write_text(
                 json.dumps(results, ensure_ascii=False, indent=2), encoding='utf-8')
             time.sleep(1)
-    mismatches = [s for s in SYMBOLS if
+    mismatches = [s for s in symbols if
                   len({r.get('digest') for r in results if r['symbol'] == s}) != 1]
     ok = sum(r['ok'] for r in results)
+    fetched = sum('digest' in r for r in results)
     summary = (f'AKShare Tencent qfq: {ok}/{len(results)} checks passed; '
+               f'fetches returned data: {fetched}/{len(results)}; '
                f'repeated-data mismatches: {mismatches}; '
                f'elapsed: {time.monotonic() - start:.1f}s. '
-               '20 SH/SZ samples only; not full-market or long-term reliability proof.')
+               f'{len(symbols)} SH/SZ samples only; not full-market or long-term reliability proof.')
     print(summary, flush=True)
     if os.environ.get('GITHUB_STEP_SUMMARY'):
         with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as out:
