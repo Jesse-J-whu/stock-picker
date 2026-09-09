@@ -40,6 +40,8 @@ jobs:
         run: python strategy.py
         env:
           TUSHARE_TOKEN: ${{ secrets.TUSHARE_TOKEN }}
+      - name: Verify exact webpage output
+        run: python verify_output.py docs
       - name: Save successful downloads even when publication is blocked
         if: always()
         uses: actions/cache/save@v4

@@ -8,6 +8,7 @@ import pandas as pd
 from qfq_data import validate_history, aggregate, AkshareMarketData, reference_day
 from market_data import MarketDataError
 import strategy
+from verify_output import verify
 
 
 def frame():
@@ -88,3 +89,11 @@ class DataTests(unittest.TestCase):
             self.assertEqual(result["timezone"], "Asia/Shanghai")
             self.assertEqual(result["trade_date"], "2026-09-09")
             self.assertEqual(result["data_quality"]["strategy_counts"]["errors"], 0)
+            self.assertIn("Verified", verify(result, content))
+            result["count"] = 1
+            with self.assertRaisesRegex(ValueError, "Result count mismatch"):
+                verify(result, content)
+            result["count"] = 0
+            result["data_quality"]["coverage"] = 0.99
+            with self.assertRaisesRegex(ValueError, "Incomplete data coverage"):
+                verify(result, content)
