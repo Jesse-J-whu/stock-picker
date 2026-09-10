@@ -1,0 +1,24 @@
+name: Export exact input for local full audit
+on:
+  push:
+    branches: [codex/local-full-audit]
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache/restore@v4
+        with:
+          path: .cache/qfq-v2/
+          key: qfq-v2-Linux-2026-09-10-34381752793-1
+          fail-on-cache-miss: true
+      - name: Verify exact scope
+        run: test "$(find .cache/qfq-v2/2026-09-09 -name '*.csv.gz' | wc -l)" -eq 5009
+      - uses: actions/upload-artifact@v4
+        with:
+          name: local-audit-input-2026-09-09
+          path: .cache/qfq-v2/2026-09-09/*.csv.gz
+          include-hidden-files: true
+          retention-days: 7
