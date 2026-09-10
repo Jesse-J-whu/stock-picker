@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-09-10 23:38:56",
+  "update_time": "2026-09-11 03:44:48",
   "timezone": "Asia/Shanghai",
   "trade_date": "2026-09-10",
   "data_quality": {
@@ -15,7 +15,7 @@
     "excluded_risk_names": 198,
     "universe": 5008,
     "valid_histories": 5008,
-    "elapsed_seconds": 9079,
+    "elapsed_seconds": 9251,
     "coverage": 1.0,
     "strategy_counts": {
       "evaluated": 4962,
