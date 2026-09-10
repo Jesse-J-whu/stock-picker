@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-09-10 03:36:53",
+  "update_time": "2026-09-10 23:38:56",
   "timezone": "Asia/Shanghai",
-  "trade_date": "2026-09-09",
+  "trade_date": "2026-09-10",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
@@ -9,17 +9,17 @@
     "source": "AKShare/腾讯前复权；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
-    "trade_date": "2026-09-09",
-    "reference_rows": 5550,
-    "sh_sz_trading_rows": 5207,
+    "trade_date": "2026-09-10",
+    "reference_rows": 5549,
+    "sh_sz_trading_rows": 5206,
     "excluded_risk_names": 198,
-    "universe": 5009,
-    "valid_histories": 5009,
-    "elapsed_seconds": 8388,
+    "universe": 5008,
+    "valid_histories": 5008,
+    "elapsed_seconds": 9079,
     "coverage": 1.0,
     "strategy_counts": {
-      "evaluated": 4964,
-      "insufficient_history": 45,
+      "evaluated": 4962,
+      "insufficient_history": 46,
       "errors": 0
     },
     "note": "周/月包含当前未结束周期；成交量不复权；短历史股票单列，不算网络失败"
@@ -27,6 +27,18 @@
   "strategy": "周线爆发",
   "adjustment": "qfq",
   "data_source": "AKShare/腾讯前复权；Tushare当日日线校验",
-  "count": 0,
-  "stocks": []
+  "count": 1,
+  "stocks": [
+    {
+      "code": "001299",
+      "name": "美能能源",
+      "price": 11.83,
+      "change_pct": 10.05,
+      "volume": 393281.23,
+      "turnover": 455520.98699,
+      "open": 10.87,
+      "high": 11.83,
+      "low": 10.69
+    }
+  ]
 }
