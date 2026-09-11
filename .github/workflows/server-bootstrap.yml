@@ -1,0 +1,24 @@
+name: Encrypt reference credential for owned server
+on:
+  push:
+    branches: [codex/server-bootstrap]
+    paths: [.github/workflows/server-bootstrap.yml, scripts/server-bootstrap.pub]
+permissions:
+  contents: read
+jobs:
+  encrypt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Encrypt existing reference credential to server-only key
+        env:
+          TUSHARE_TOKEN: ${{ secrets.TUSHARE_TOKEN }}
+        run: |
+          set -eu
+          test -n "$TUSHARE_TOKEN"
+          printf '%s' "$TUSHARE_TOKEN" | openssl pkeyutl -encrypt -pubin -inkey scripts/server-bootstrap.pub -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha256 -out reference.enc
+      - uses: actions/upload-artifact@v4
+        with:
+          name: server-encrypted-reference
+          path: reference.enc
+          retention-days: 1
