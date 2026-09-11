@@ -1,8 +1,7 @@
 name: 前复权选股与自动网页
 on:
-  schedule:
-    # Beijing 16:37, with a 21:37 retry using same-day validated cache.
-    - cron: '37 8,13 * * 1-5'
+  # Automatic runs are owned by the verified Tencent server timer.
+  # Keep this full-calculation workflow as a manually dispatched fallback.
   workflow_dispatch:
 permissions:
   contents: write
