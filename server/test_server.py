@@ -14,6 +14,19 @@ def response(rows):
 
 
 class ServerTests(unittest.TestCase):
+    @patch('fast_qfq.today')
+    @patch('fast_qfq.session')
+    def test_today_uses_open_end_and_accepts_appended_current_bar(self,mock,clock):
+        clock.return_value=pd.Timestamp('2026-09-09').date()
+        rows=[[d.strftime('%Y-%m-%d'),1,2,3,1,100]
+              for d in pd.date_range(end='2026-09-09',periods=641)]
+        mock.return_value.get.side_effect=[response([]),response([]),response(rows)]
+        frame=fast_qfq.full_history('sz000001','2026-09-09')
+        self.assertEqual(len(frame),641)
+        self.assertEqual(frame.date.iloc[-1],pd.Timestamp('2026-09-09'))
+        self.assertEqual(mock.return_value.get.call_args.kwargs['params']['param'],
+                         'sz000001,day,2025-01-01,,640,qfq')
+
     def test_cache_retention_only_removes_old_date_directories(self):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary)
