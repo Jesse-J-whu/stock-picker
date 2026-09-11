@@ -116,9 +116,12 @@ def main():
     try:
         os.environ['TUSHARE_TOKEN'] = (BASE / 'private/tushare.token').read_text().strip()
         qfq_data.ROOT = STATE
+        qfq_data.SOURCE = '腾讯前复权（全量加速抓取）；Tushare当日日线校验'
         from fast_qfq import FastMarketData
         snapshot = FastMarketData().load()
         prune_cache(snapshot.cache)
+        snapshot.audit.update(transport='tencent-native-json-full-window-v1',
+                              full_refetch_each_trade_date=True, shared_snapshot=True)
         if snapshot.trade_date != trade_date:
             raise ValueError('Snapshot is not the requested trading date')
         status['coverage'] = snapshot.audit['coverage']
