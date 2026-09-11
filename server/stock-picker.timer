@@ -1,0 +1,14 @@
+[Unit]
+Description=Beijing afternoon stock screening with bounded retries
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 16:00/10:00 Asia/Shanghai
+OnCalendar=Mon..Fri *-*-* 17:30:00 Asia/Shanghai
+OnCalendar=Mon..Fri *-*-* 21:00:00 Asia/Shanghai
+AccuracySec=1s
+RandomizedDelaySec=0
+Persistent=true
+Unit=stock-picker.service
+
+[Install]
+WantedBy=timers.target

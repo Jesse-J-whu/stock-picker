@@ -1,0 +1,24 @@
+[Unit]
+Description=Validated shared-market stock screening and Pages publication
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=stockpicker
+Group=stockpicker
+WorkingDirectory=/opt/stock-picker/current
+Environment=TZ=Asia/Shanghai
+Environment=PYTHONUNBUFFERED=1
+Environment=QFQ_WORKERS=4
+ExecStart=/opt/stock-picker/venv/bin/python /opt/stock-picker/current/server/runner.py
+TimeoutStartSec=3h
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/stock-picker/state /opt/stock-picker/repos
+MemoryMax=2600M
+CPUQuota=300%
+
