@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-09-11 16:30:12",
+  "update_time": "2026-09-14 16:10:17",
   "timezone": "Asia/Shanghai",
-  "trade_date": "2026-09-11",
+  "trade_date": "2026-09-14",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
@@ -9,13 +9,13 @@
     "source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
-    "trade_date": "2026-09-11",
+    "trade_date": "2026-09-14",
     "reference_rows": 5550,
     "sh_sz_trading_rows": 5207,
     "excluded_risk_names": 197,
     "universe": 5010,
     "valid_histories": 5010,
-    "elapsed_seconds": 537,
+    "elapsed_seconds": 558,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
@@ -30,6 +30,29 @@
   "strategy": "周线爆发",
   "adjustment": "qfq",
   "data_source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
-  "count": 0,
-  "stocks": []
+  "count": 2,
+  "stocks": [
+    {
+      "code": "001299",
+      "name": "美能能源",
+      "price": 11.39,
+      "change_pct": 4.5,
+      "volume": 296330.47,
+      "turnover": 343285.13874,
+      "open": 10.92,
+      "high": 11.99,
+      "low": 10.92
+    },
+    {
+      "code": "300497",
+      "name": "富祥股份",
+      "price": 20.26,
+      "change_pct": 1.2,
+      "volume": 293694.48,
+      "turnover": 591962.17487,
+      "open": 19.99,
+      "high": 20.37,
+      "low": 19.7
+    }
+  ]
 }

@@ -178,18 +178,18 @@ body {
 <div class="header">
     <h1>周线爆发选股</h1>
     <div class="meta">
-        <span>2026年09月11日 16:30 北京时间更新</span>
-        <span class="count">0 只</span>
+        <span>2026年09月14日 16:10 北京时间更新</span>
+        <span class="count">2 只</span>
     </div>
     <div class="strategy-tag">BOLL扩张 + 放量 + MACD零上金叉</div>
 </div>
 
 <div class="disclaimer" id="data-status">
-    行情日期 2026-09-11 · 前复权 · 覆盖 5010/5010 · 已计算 4963 · 历史不足 47 · 沪深当日交易股票（不含北交所/停牌/ST） · 周/月含未结束周期<br>价格：前复权；放量指标：成交量（非成交额）。
+    行情日期 2026-09-14 · 前复权 · 覆盖 5010/5010 · 已计算 4963 · 历史不足 47 · 沪深当日交易股票（不含北交所/停牌/ST） · 周/月含未结束周期<br>价格：前复权；放量指标：成交量（非成交额）。
     <br><span id="freshness-warning"></span>
 </div>
 <script>
-const dataDay = "行情日期 2026-09-11 · 前复权 · 覆盖 5010/5010 · 已计算 4963 · 历史不足 47 · 沪深当日交易股票（不含北交所/停牌/ST） · 周/月含未结束周期".match(/\d{4}-\d{2}-\d{2}/);
+const dataDay = "行情日期 2026-09-14 · 前复权 · 覆盖 5010/5010 · 已计算 4963 · 历史不足 47 · 沪深当日交易股票（不含北交所/停牌/ST） · 周/月含未结束周期".match(/\d{4}-\d{2}-\d{2}/);
 if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400000) {
   document.getElementById("freshness-warning").textContent =
     "提示：行情日期距今超过4天，可能为休市或任务未更新，请核对运行状态。";
@@ -201,10 +201,77 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
 
 <div class="stock-list">
 
-<div class="empty-state">
-    <div class="icon">📊</div>
-    <p>今日暂无符合"周线爆发"策略的股票<br>策略会在每个交易日自动更新</p>
+
+<div class="stock-card">
+    <div class="card-top">
+        <div>
+            <div class="stock-name">美能能源</div>
+            <div class="stock-code">001299</div>
+        </div>
+        <div class="stock-price">
+            
+            <div class="price-value up">
+                11.39
+            </div>
+            <div class="price-change up">
+                +4.50%
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="card-bottom">
+        <div class="metric">
+            <div class="metric-label">开盘</div>
+            <div class="metric-value">10.92</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">最高</div>
+            <div class="metric-value">11.99</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">最低</div>
+            <div class="metric-value">10.92</div>
+        </div>
+    </div>
+    
 </div>
+
+<div class="stock-card">
+    <div class="card-top">
+        <div>
+            <div class="stock-name">富祥股份</div>
+            <div class="stock-code">300497</div>
+        </div>
+        <div class="stock-price">
+            
+            <div class="price-value up">
+                20.26
+            </div>
+            <div class="price-change up">
+                +1.20%
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="card-bottom">
+        <div class="metric">
+            <div class="metric-label">开盘</div>
+            <div class="metric-value">19.99</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">最高</div>
+            <div class="metric-value">20.37</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">最低</div>
+            <div class="metric-value">19.70</div>
+        </div>
+    </div>
+    
+</div>
+
 
 </div>
 
