@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-09-15 16:10:19",
+  "update_time": "2026-09-16 16:10:26",
   "timezone": "Asia/Shanghai",
-  "trade_date": "2026-09-15",
+  "trade_date": "2026-09-16",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
@@ -9,20 +9,20 @@
     "source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
-    "trade_date": "2026-09-15",
-    "reference_rows": 5548,
-    "sh_sz_trading_rows": 5205,
+    "trade_date": "2026-09-16",
+    "reference_rows": 5550,
+    "sh_sz_trading_rows": 5206,
     "excluded_risk_names": 197,
-    "universe": 5008,
-    "valid_histories": 5008,
-    "elapsed_seconds": 560,
+    "universe": 5009,
+    "valid_histories": 5009,
+    "elapsed_seconds": 565,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
     "shared_snapshot": true,
     "strategy_counts": {
       "evaluated": 4961,
-      "insufficient_history": 47,
+      "insufficient_history": 48,
       "errors": 0
     },
     "note": "周/月包含当前未结束周期；成交量不复权；短历史股票单列，不算网络失败"
@@ -35,24 +35,24 @@
     {
       "code": "300497",
       "name": "富祥股份",
-      "price": 20.92,
-      "change_pct": 3.26,
-      "volume": 479980.59,
-      "turnover": 1006572.04179,
-      "open": 20.24,
-      "high": 21.75,
-      "low": 20.06
+      "price": 22.05,
+      "change_pct": 5.4,
+      "volume": 601793.46,
+      "turnover": 1307236.0566,
+      "open": 20.92,
+      "high": 22.45,
+      "low": 20.92
     },
     {
       "code": "603270",
       "name": "金帝股份",
-      "price": 34.47,
-      "change_pct": 4.77,
-      "volume": 165496.03,
-      "turnover": 563292.882,
-      "open": 32.78,
-      "high": 35.23,
-      "low": 32.4
+      "price": 35.17,
+      "change_pct": 2.03,
+      "volume": 117901.88,
+      "turnover": 411225.361,
+      "open": 34.64,
+      "high": 35.49,
+      "low": 33.8
     }
   ]
 }
