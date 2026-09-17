@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-09-16 16:10:26",
+  "update_time": "2026-09-17 16:10:22",
   "timezone": "Asia/Shanghai",
-  "trade_date": "2026-09-16",
+  "trade_date": "2026-09-17",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
@@ -9,20 +9,20 @@
     "source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
-    "trade_date": "2026-09-16",
-    "reference_rows": 5550,
-    "sh_sz_trading_rows": 5206,
+    "trade_date": "2026-09-17",
+    "reference_rows": 5553,
+    "sh_sz_trading_rows": 5209,
     "excluded_risk_names": 197,
-    "universe": 5009,
-    "valid_histories": 5009,
-    "elapsed_seconds": 565,
+    "universe": 5012,
+    "valid_histories": 5012,
+    "elapsed_seconds": 562,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
     "shared_snapshot": true,
     "strategy_counts": {
-      "evaluated": 4961,
-      "insufficient_history": 48,
+      "evaluated": 4963,
+      "insufficient_history": 49,
       "errors": 0
     },
     "note": "周/月包含当前未结束周期；成交量不复权；短历史股票单列，不算网络失败"
@@ -30,29 +30,40 @@
   "strategy": "周线爆发",
   "adjustment": "qfq",
   "data_source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
-  "count": 2,
+  "count": 3,
   "stocks": [
+    {
+      "code": "001378",
+      "name": "德冠新材",
+      "price": 22.87,
+      "change_pct": 1.42,
+      "volume": 199444.07,
+      "turnover": 444146.48406,
+      "open": 22.28,
+      "high": 23.18,
+      "low": 21.5
+    },
     {
       "code": "300497",
       "name": "富祥股份",
-      "price": 22.05,
-      "change_pct": 5.4,
-      "volume": 601793.46,
-      "turnover": 1307236.0566,
-      "open": 20.92,
-      "high": 22.45,
-      "low": 20.92
+      "price": 21.86,
+      "change_pct": -0.86,
+      "volume": 417937.4,
+      "turnover": 913474.21548,
+      "open": 21.77,
+      "high": 22.3,
+      "low": 21.54
     },
     {
       "code": "603270",
       "name": "金帝股份",
-      "price": 35.17,
-      "change_pct": 2.03,
-      "volume": 117901.88,
-      "turnover": 411225.361,
-      "open": 34.64,
-      "high": 35.49,
-      "low": 33.8
+      "price": 36.48,
+      "change_pct": 3.72,
+      "volume": 120864.69,
+      "turnover": 435935.042,
+      "open": 34.82,
+      "high": 36.85,
+      "low": 34.54
     }
   ]
 }
