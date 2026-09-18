@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-09-17 16:10:22",
+  "update_time": "2026-09-18 16:10:28",
   "timezone": "Asia/Shanghai",
-  "trade_date": "2026-09-17",
+  "trade_date": "2026-09-18",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
@@ -9,13 +9,13 @@
     "source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
-    "trade_date": "2026-09-17",
+    "trade_date": "2026-09-18",
     "reference_rows": 5553,
     "sh_sz_trading_rows": 5209,
     "excluded_risk_names": 197,
     "universe": 5012,
     "valid_histories": 5012,
-    "elapsed_seconds": 562,
+    "elapsed_seconds": 565,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
@@ -30,40 +30,51 @@
   "strategy": "周线爆发",
   "adjustment": "qfq",
   "data_source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
-  "count": 3,
+  "count": 4,
   "stocks": [
     {
       "code": "001378",
       "name": "德冠新材",
-      "price": 22.87,
-      "change_pct": 1.42,
-      "volume": 199444.07,
-      "turnover": 444146.48406,
-      "open": 22.28,
-      "high": 23.18,
-      "low": 21.5
+      "price": 23.57,
+      "change_pct": 3.06,
+      "volume": 139322.04,
+      "turnover": 325655.10934,
+      "open": 23.17,
+      "high": 23.68,
+      "low": 22.92
     },
     {
       "code": "300497",
       "name": "富祥股份",
-      "price": 21.86,
-      "change_pct": -0.86,
-      "volume": 417937.4,
-      "turnover": 913474.21548,
-      "open": 21.77,
-      "high": 22.3,
-      "low": 21.54
+      "price": 21.38,
+      "change_pct": -2.2,
+      "volume": 565209.31,
+      "turnover": 1211129.86394,
+      "open": 21.86,
+      "high": 21.98,
+      "low": 20.71
+    },
+    {
+      "code": "600400",
+      "name": "红豆股份",
+      "price": 3.46,
+      "change_pct": 3.9,
+      "volume": 1532147.16,
+      "turnover": 524997.776,
+      "open": 3.34,
+      "high": 3.56,
+      "low": 3.21
     },
     {
       "code": "603270",
       "name": "金帝股份",
-      "price": 36.48,
-      "change_pct": 3.72,
-      "volume": 120864.69,
-      "turnover": 435935.042,
-      "open": 34.82,
-      "high": 36.85,
-      "low": 34.54
+      "price": 36.83,
+      "change_pct": 0.96,
+      "volume": 98387.17,
+      "turnover": 362121.933,
+      "open": 36.89,
+      "high": 37.7,
+      "low": 36.01
     }
   ]
 }
