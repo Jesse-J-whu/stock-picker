@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-09-18 16:10:28",
+  "update_time": "2026-09-21 16:10:18",
   "timezone": "Asia/Shanghai",
-  "trade_date": "2026-09-18",
+  "trade_date": "2026-09-21",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
@@ -9,20 +9,20 @@
     "source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
-    "trade_date": "2026-09-18",
+    "trade_date": "2026-09-21",
     "reference_rows": 5553,
     "sh_sz_trading_rows": 5209,
     "excluded_risk_names": 197,
     "universe": 5012,
     "valid_histories": 5012,
-    "elapsed_seconds": 565,
+    "elapsed_seconds": 556,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
     "shared_snapshot": true,
     "strategy_counts": {
-      "evaluated": 4963,
-      "insufficient_history": 49,
+      "evaluated": 4964,
+      "insufficient_history": 48,
       "errors": 0
     },
     "note": "周/月包含当前未结束周期；成交量不复权；短历史股票单列，不算网络失败"
@@ -30,51 +30,62 @@
   "strategy": "周线爆发",
   "adjustment": "qfq",
   "data_source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
-  "count": 4,
+  "count": 5,
   "stocks": [
     {
       "code": "001378",
       "name": "德冠新材",
-      "price": 23.57,
-      "change_pct": 3.06,
-      "volume": 139322.04,
-      "turnover": 325655.10934,
-      "open": 23.17,
-      "high": 23.68,
-      "low": 22.92
+      "price": 23.98,
+      "change_pct": 1.74,
+      "volume": 103689.61,
+      "turnover": 247450.33972,
+      "open": 23.68,
+      "high": 24.35,
+      "low": 23.35
     },
     {
-      "code": "300497",
-      "name": "富祥股份",
-      "price": 21.38,
-      "change_pct": -2.2,
-      "volume": 565209.31,
-      "turnover": 1211129.86394,
-      "open": 21.86,
-      "high": 21.98,
-      "low": 20.71
+      "code": "002452",
+      "name": "长高电气",
+      "price": 12.3,
+      "change_pct": 1.57,
+      "volume": 120369.61,
+      "turnover": 147364.44704,
+      "open": 12.11,
+      "high": 12.32,
+      "low": 12.06
+    },
+    {
+      "code": "002876",
+      "name": "三利谱",
+      "price": 32.35,
+      "change_pct": 2.08,
+      "volume": 50025.62,
+      "turnover": 161414.84255,
+      "open": 31.69,
+      "high": 32.75,
+      "low": 31.6
+    },
+    {
+      "code": "003026",
+      "name": "中晶科技",
+      "price": 37.89,
+      "change_pct": 1.85,
+      "volume": 469259.51,
+      "turnover": 1726647.70414,
+      "open": 37.21,
+      "high": 37.95,
+      "low": 35.82
     },
     {
       "code": "600400",
       "name": "红豆股份",
-      "price": 3.46,
-      "change_pct": 3.9,
-      "volume": 1532147.16,
-      "turnover": 524997.776,
-      "open": 3.34,
-      "high": 3.56,
-      "low": 3.21
-    },
-    {
-      "code": "603270",
-      "name": "金帝股份",
-      "price": 36.83,
-      "change_pct": 0.96,
-      "volume": 98387.17,
-      "turnover": 362121.933,
-      "open": 36.89,
-      "high": 37.7,
-      "low": 36.01
+      "price": 3.6,
+      "change_pct": 4.05,
+      "volume": 1538197.82,
+      "turnover": 543651.748,
+      "open": 3.4,
+      "high": 3.66,
+      "low": 3.32
     }
   ]
 }
