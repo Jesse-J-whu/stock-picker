@@ -5,7 +5,7 @@ from unittest.mock import patch
 from types import SimpleNamespace
 import pandas as pd
 import fast_qfq
-from runner import bind_snapshot, prune_cache
+from runner import bind_snapshot, prune_cache, publish
 
 
 def response(rows):
@@ -14,6 +14,34 @@ def response(rows):
 
 
 class ServerTests(unittest.TestCase):
+    @patch('runner.git')
+    def test_first_publication_allows_repository_without_docs(self, git):
+        with tempfile.TemporaryDirectory() as temporary:
+            from runner import BASE
+            import runner
+            old_base = runner.BASE
+            try:
+                runner.BASE = Path(temporary)
+                repo = Path(temporary) / 'repos' / 'new-repo'
+                output = Path(temporary) / 'output'
+                repo.mkdir(parents=True)
+                output.mkdir()
+                (output / 'data.json').write_text('{}')
+                (output / 'index.html').write_text('ok')
+                def command(name, *args):
+                    if args[:2] == ('show', 'origin/main:docs/data.json'):
+                        raise RuntimeError("Path 'docs/data.json' does not exist in 'origin/main'")
+                    if args[:3] == ('diff', '--cached', '--name-only'):
+                        return 'docs/data.json'
+                    if args[:2] == ('rev-parse', 'HEAD'):
+                        return 'abc'
+                    return ''
+                git.side_effect = command
+                self.assertEqual(publish('new-repo', output, '2026-09-30'), 'abc')
+                self.assertEqual((repo / 'docs/index.html').read_text(), 'ok')
+            finally:
+                runner.BASE = old_base
+
     @patch('fast_qfq.today')
     @patch('fast_qfq.session')
     def test_today_uses_open_end_and_accepts_appended_current_bar(self,mock,clock):
