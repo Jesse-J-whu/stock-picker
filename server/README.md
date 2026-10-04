@@ -1,7 +1,7 @@
 # Dedicated server deployment
 
 Production keeps its existing GitHub Pages URLs. A separate Linux `stockpicker`
-account runs pinned copies of V1 and V4 in `/opt/stock-picker/current/{v1,v4}`.
+account runs pinned copies of V1, V4 and V6 in `/opt/stock-picker/current/{v1,v4,v6}`.
 It does not depend on the interactive SSH session or the owner's desktop.
 Existing Caddy/Hermes configuration is not replaced.
 
