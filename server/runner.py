@@ -16,7 +16,7 @@ from zoneinfo import ZoneInfo
 BASE = Path(os.environ.get('STOCK_PICKER_HOME', '/opt/stock-picker'))
 RELEASE = Path(__file__).resolve().parents[1]
 STATE = BASE / 'state'
-REPOS = {'v1': 'stock-picker', 'v4': 'stock-picker-v4'}
+REPOS = {'v1': 'stock-picker', 'v4': 'stock-picker-v4', 'v6': 'stock-picker-v6'}
 
 
 def atomic_json(path, data):
@@ -107,7 +107,7 @@ def main():
     status_path = STATE / 'status.json'
     previous = json.loads(status_path.read_text()) if status_path.exists() else {}
     if previous.get('trade_date') == trade_date and previous.get('state') == 'published' and not args.dry_run:
-        print('Both Pages outputs already verified for today.', flush=True)
+        print('All Pages outputs already verified for today.', flush=True)
         return
     started = time.monotonic()
     status = {'trade_date': trade_date, 'state': 'running', 'started': now.isoformat(),
