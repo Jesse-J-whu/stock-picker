@@ -75,10 +75,18 @@ def publish(repo, output, trade_date):
     folder = BASE / 'repos' / repo
     # Never discard local changes or force-push. Previous failed pushes may leave a commit.
     git(repo, 'fetch', 'origin', 'main')
-    remote = json.loads(git(repo, 'show', 'origin/main:docs/data.json'))
+    try:
+        remote = json.loads(git(repo, 'show', 'origin/main:docs/data.json'))
+    except RuntimeError as error:
+        message = str(error)
+        if 'docs/data.json' not in message or not any(
+                marker in message for marker in ('does not exist', 'exists on disk', 'not in')):
+            raise
+        remote = {}
     if remote.get('trade_date', '') > trade_date:
         raise RuntimeError(f'Refusing to overwrite newer {repo} data')
     git(repo, 'merge', '--ff-only', 'origin/main')
+    (folder / 'docs').mkdir(parents=True, exist_ok=True)
     for name in ('data.json', 'index.html'):
         (folder / 'docs' / name).write_bytes((output / name).read_bytes())
     git(repo, 'add', 'docs/data.json', 'docs/index.html')
