@@ -1,4 +1,4 @@
-"""Validated AKShare/Tencent qfq history; Tushare only supplies current-day reference."""
+"""Validated AKShare/Tencent qfq history with Tushare daily reference metadata."""
 import json
 import os
 import re
@@ -14,7 +14,7 @@ import requests
 
 from market_data import MarketDataError
 
-SOURCE = "AKShare/腾讯前复权；Tushare当日日线校验"
+SOURCE = "AKShare/腾讯前复权；Tushare当日日线及流通市值校验"
 ROOT = Path(__file__).resolve().parent
 
 
@@ -120,7 +120,21 @@ class AkshareMarketData:
             raise MarketDataError(f"Reference snapshot incomplete: {len(raw)} rows")
         if set(raw.trade_date.astype(str)) != {day}:
             raise MarketDataError("Reference date mismatch")
+        basic = self.request("daily_basic", {"trade_date": day},
+                             "ts_code,trade_date,circ_mv")
+        if len(basic) < 4000 or basic.ts_code.duplicated().any():
+            raise MarketDataError(f"Daily-basic snapshot incomplete: {len(basic)} rows")
+        if set(basic.trade_date.astype(str)) != {day}:
+            raise MarketDataError("Daily-basic date mismatch")
+        basic["circ_mv"] = pd.to_numeric(basic["circ_mv"], errors="coerce")
+        if basic["circ_mv"].isna().any() or (basic["circ_mv"] <= 0).any():
+            raise MarketDataError("Invalid circulating market capitalization")
+        raw = raw.merge(basic[["ts_code", "circ_mv"]], on="ts_code", how="left",
+                        validate="one_to_one")
+        if raw["circ_mv"].isna().any():
+            raise MarketDataError("Missing circulating market capitalization")
         self.audit.update(trade_date=self.trade_date, reference_rows=len(raw))
+        self.audit["market_cap_rows"] = len(basic)
         raw = raw[raw.ts_code.str.endswith((".SH", ".SZ"))].copy()
         self.audit["sh_sz_trading_rows"] = len(raw)
         self.raw = raw.set_index("ts_code")
