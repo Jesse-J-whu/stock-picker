@@ -86,6 +86,21 @@ class DataTests(unittest.TestCase):
         self.assertEqual(result.iloc[0].ts_code, "000001.SZ")
         sleep.assert_called_once_with(65)
 
+    def test_daily_basic_is_cached_per_trade_date(self):
+        day = "20260909"
+        frame = pd.DataFrame({"ts_code": [f"{i:06d}.SZ" for i in range(4000)],
+                              "trade_date": [day] * 4000,
+                              "circ_mv": [200_000.0] * 4000})
+        provider = object.__new__(AkshareMarketData)
+        with tempfile.TemporaryDirectory() as temp:
+            provider.cache = Path(temp)
+            with patch.object(provider, "request", return_value=frame) as request:
+                first = provider.daily_basic(day)
+                second = provider.daily_basic(day)
+            self.assertEqual(len(first), 4000)
+            self.assertEqual(second.iloc[0].ts_code, "000000.SZ")
+            request.assert_called_once()
+
     def test_publish_metadata(self):
         provider = object.__new__(AkshareMarketData)
         provider.trade_date = "2026-09-09"

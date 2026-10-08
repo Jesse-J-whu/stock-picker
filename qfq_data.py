@@ -101,9 +101,43 @@ class AkshareMarketData:
             except (requests.RequestException, MarketDataError) as error:
                 if attempt == 2:
                     raise
-                rate_limited = "频率超限" in str(error) or "rate limit" in str(error).lower()
-                time.sleep(65 if api_name == "trade_cal" or rate_limited else 8)
+                message = str(error)
+                rate_limited = "频率超限" in message or "rate limit" in message.lower()
+                if "1次/小时" in message:
+                    delay = 3605
+                else:
+                    delay = 65 if api_name == "trade_cal" or rate_limited else 8
+                time.sleep(delay)
         raise AssertionError("unreachable")
+
+    @staticmethod
+    def validate_daily_basic(frame, day):
+        required = {"ts_code", "trade_date", "circ_mv"}
+        if len(frame) < 4000 or not required.issubset(frame.columns):
+            raise MarketDataError(f"Daily-basic snapshot incomplete: {len(frame)} rows")
+        frame = frame[["ts_code", "trade_date", "circ_mv"]].copy()
+        if frame.ts_code.duplicated().any() or set(frame.trade_date.astype(str)) != {day}:
+            raise MarketDataError("Daily-basic date or code mismatch")
+        frame["circ_mv"] = pd.to_numeric(frame["circ_mv"], errors="coerce")
+        if frame["circ_mv"].isna().any() or (frame["circ_mv"] <= 0).any():
+            raise MarketDataError("Invalid circulating market capitalization")
+        return frame
+
+    def daily_basic(self, day):
+        path = self.cache / "reference" / f"daily-basic-{day}.csv.gz"
+        if path.exists():
+            try:
+                return self.validate_daily_basic(pd.read_csv(path, dtype={"ts_code": str}), day)
+            except Exception:
+                pass
+        frame = self.validate_daily_basic(
+            self.request("daily_basic", {"trade_date": day},
+                         "ts_code,trade_date,circ_mv"), day)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        temporary = path.with_suffix(".tmp")
+        frame.to_csv(temporary, index=False, compression="gzip")
+        temporary.replace(path)
+        return frame
 
     def reference(self):
         now = beijing_now()
@@ -121,15 +155,7 @@ class AkshareMarketData:
             raise MarketDataError(f"Reference snapshot incomplete: {len(raw)} rows")
         if set(raw.trade_date.astype(str)) != {day}:
             raise MarketDataError("Reference date mismatch")
-        basic = self.request("daily_basic", {"trade_date": day},
-                             "ts_code,trade_date,circ_mv")
-        if len(basic) < 4000 or basic.ts_code.duplicated().any():
-            raise MarketDataError(f"Daily-basic snapshot incomplete: {len(basic)} rows")
-        if set(basic.trade_date.astype(str)) != {day}:
-            raise MarketDataError("Daily-basic date mismatch")
-        basic["circ_mv"] = pd.to_numeric(basic["circ_mv"], errors="coerce")
-        if basic["circ_mv"].isna().any() or (basic["circ_mv"] <= 0).any():
-            raise MarketDataError("Invalid circulating market capitalization")
+        basic = self.daily_basic(day)
         raw = raw.merge(basic[["ts_code", "circ_mv"]], on="ts_code", how="left",
                         validate="one_to_one")
         if raw["circ_mv"].isna().any():
