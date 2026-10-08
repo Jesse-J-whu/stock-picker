@@ -14,7 +14,7 @@ import requests
 
 from market_data import MarketDataError
 
-SOURCE = "AKShare/腾讯前复权；Tushare当日日线及流通市值校验"
+SOURCE = "腾讯前复权及流通市值；Tushare当日日线校验"
 ROOT = Path(__file__).resolve().parent
 
 
@@ -155,18 +155,14 @@ class AkshareMarketData:
             raise MarketDataError(f"Reference snapshot incomplete: {len(raw)} rows")
         if set(raw.trade_date.astype(str)) != {day}:
             raise MarketDataError("Reference date mismatch")
-        basic = self.daily_basic(day)
-        raw = raw.merge(basic[["ts_code", "circ_mv"]], on="ts_code", how="left",
-                        validate="one_to_one")
-        if raw["circ_mv"].isna().any():
-            raise MarketDataError("Missing circulating market capitalization")
         self.audit.update(trade_date=self.trade_date, reference_rows=len(raw))
-        self.audit["market_cap_rows"] = len(basic)
         raw = raw[raw.ts_code.str.endswith((".SH", ".SZ"))].copy()
         self.audit["sh_sz_trading_rows"] = len(raw)
         self.raw = raw.set_index("ts_code")
         # Fresh names for the entire reference universe, never silently code-only.
         names = {}
+        circulating_caps = {}
+        quote_dates = {}
         codes = list(self.raw.index)
         for offset in range(0, len(codes), 80):
             symbols = [c[-2:].lower() + c[:6] for c in codes[offset:offset + 80]]
@@ -177,9 +173,17 @@ class AkshareMarketData:
                     response.encoding = "gbk"
                     for symbol, content in re.findall(r'v_([a-z]{2}\d{6})="([^"]*)"', response.text):
                         parts = content.split("~")
-                        if len(parts) > 2 and parts[1].strip():
-                            names[symbol[2:] + "." + symbol[:2].upper()] = parts[1].strip()
-                    if all(c in names for c in codes[offset:offset + 80]):
+                        code = symbol[2:] + "." + symbol[:2].upper()
+                        if len(parts) > 45 and parts[1].strip():
+                            try:
+                                cap_yi = float(parts[44])
+                            except ValueError:
+                                continue
+                            if cap_yi > 0 and parts[30].strip():
+                                names[code] = parts[1].strip()
+                                circulating_caps[code] = cap_yi * 10_000  # 亿元 -> 万元
+                                quote_dates[code] = parts[30].strip()[:8]
+                    if all(c in names and c in circulating_caps for c in codes[offset:offset + 80]):
                         break
                 except requests.RequestException:
                     pass
@@ -187,7 +191,16 @@ class AkshareMarketData:
         missing = set(codes) - set(names)
         if missing:
             raise MarketDataError(f"Missing current stock names: {len(missing)}")
+        missing_caps = set(codes) - set(circulating_caps)
+        if missing_caps:
+            raise MarketDataError(f"Missing circulating market capitalization: {len(missing_caps)}")
+        wrong_dates = [c for c in codes if quote_dates.get(c) != day]
+        if wrong_dates:
+            raise MarketDataError(f"Market-cap quote date mismatch: {len(wrong_dates)}")
         self.raw["name"] = [names[c] for c in self.raw.index]
+        self.raw["circ_mv"] = [circulating_caps[c] for c in self.raw.index]
+        self.audit["market_cap_rows"] = len(circulating_caps)
+        self.audit["market_cap_source"] = "Tencent quote field 44 (circulating market cap, 亿元)"
         excluded = self.raw.name.str.contains("ST|PT|退", case=False, regex=True)
         self.audit["excluded_risk_names"] = int(excluded.sum())
         self.raw = self.raw.loc[~excluded].copy()

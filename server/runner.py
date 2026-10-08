@@ -124,7 +124,7 @@ def main():
     try:
         os.environ['TUSHARE_TOKEN'] = (BASE / 'private/tushare.token').read_text().strip()
         qfq_data.ROOT = STATE
-        qfq_data.SOURCE = '腾讯前复权（全量加速抓取）；Tushare当日日线及流通市值校验'
+        qfq_data.SOURCE = '腾讯前复权及流通市值（全量抓取）；Tushare当日日线校验'
         from fast_qfq import FastMarketData
         snapshot = FastMarketData().load()
         prune_cache(snapshot.cache)

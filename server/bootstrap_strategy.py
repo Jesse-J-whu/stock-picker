@@ -21,7 +21,7 @@ def main():
 
     os.environ['TUSHARE_TOKEN'] = (BASE / 'private/tushare.token').read_text().strip()
     qfq_data.ROOT = STATE
-    qfq_data.SOURCE = '腾讯前复权（全量加速抓取）；Tushare当日日线及流通市值校验'
+    qfq_data.SOURCE = '腾讯前复权及流通市值（全量抓取）；Tushare当日日线校验'
     snapshot = FastMarketData().load()
     snapshot.audit.update(transport='tencent-native-json-full-window-v1',
                           full_refetch_each_trade_date=True, shared_snapshot=True)
