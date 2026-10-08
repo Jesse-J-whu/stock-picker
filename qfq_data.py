@@ -98,10 +98,11 @@ class AkshareMarketData:
                     raise MarketDataError(f"{api_name}: {payload.get('msg', 'API error')}")
                 data = payload.get("data") or {}
                 return pd.DataFrame(data.get("items", []), columns=data.get("fields", []))
-            except (requests.RequestException, MarketDataError):
+            except (requests.RequestException, MarketDataError) as error:
                 if attempt == 2:
                     raise
-                time.sleep(65 if api_name == "trade_cal" else 8)
+                rate_limited = "频率超限" in str(error) or "rate limit" in str(error).lower()
+                time.sleep(65 if api_name == "trade_cal" or rate_limited else 8)
         raise AssertionError("unreachable")
 
     def reference(self):

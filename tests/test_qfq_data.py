@@ -69,6 +69,23 @@ class DataTests(unittest.TestCase):
         f.loc[0, ["open", "close", "high", "low"]] *= 0.5
         self.assertEqual(aggregate(f, "week", 1).iloc[0].vol, 600)
 
+    @patch("qfq_data.time.sleep")
+    @patch("qfq_data.requests.post")
+    def test_rate_limit_waits_for_next_minute(self, post, sleep):
+        limited = unittest.mock.Mock()
+        limited.raise_for_status.return_value = None
+        limited.json.return_value = {"code": -1, "msg": "接口频率超限(1次/分钟)"}
+        success = unittest.mock.Mock()
+        success.raise_for_status.return_value = None
+        success.json.return_value = {"code": 0, "data": {"fields": ["ts_code"],
+                                                           "items": [["000001.SZ"]]}}
+        post.side_effect = [limited, success]
+        provider = object.__new__(AkshareMarketData)
+        provider.token = "test-only"
+        result = provider.request("daily_basic", {"trade_date": "20260909"}, "ts_code")
+        self.assertEqual(result.iloc[0].ts_code, "000001.SZ")
+        sleep.assert_called_once_with(65)
+
     def test_publish_metadata(self):
         provider = object.__new__(AkshareMarketData)
         provider.trade_date = "2026-09-09"
