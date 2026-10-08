@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-09-30 16:10:18",
+  "update_time": "2026-10-08 16:10:20",
   "timezone": "Asia/Shanghai",
-  "trade_date": "2026-09-30",
+  "trade_date": "2026-10-08",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
@@ -9,19 +9,19 @@
     "source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
-    "trade_date": "2026-09-30",
-    "reference_rows": 5561,
-    "sh_sz_trading_rows": 5213,
+    "trade_date": "2026-10-08",
+    "reference_rows": 5557,
+    "sh_sz_trading_rows": 5209,
     "excluded_risk_names": 195,
-    "universe": 5018,
-    "valid_histories": 5018,
-    "elapsed_seconds": 557,
+    "universe": 5014,
+    "valid_histories": 5014,
+    "elapsed_seconds": 556,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
     "shared_snapshot": true,
     "strategy_counts": {
-      "evaluated": 4967,
+      "evaluated": 4963,
       "insufficient_history": 51,
       "errors": 0
     },
@@ -30,18 +30,6 @@
   "strategy": "周线爆发",
   "adjustment": "qfq",
   "data_source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
-  "count": 1,
-  "stocks": [
-    {
-      "code": "001378",
-      "name": "德冠新材",
-      "price": 21.96,
-      "change_pct": -0.86,
-      "volume": 37974.07,
-      "turnover": 84173.07838,
-      "open": 22.27,
-      "high": 22.79,
-      "low": 21.87
-    }
-  ]
+  "count": 0,
+  "stocks": []
 }
