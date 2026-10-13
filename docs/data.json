@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-10-12 16:10:13",
+  "update_time": "2026-10-13 16:10:26",
   "timezone": "Asia/Shanghai",
-  "trade_date": "2026-10-12",
+  "trade_date": "2026-10-13",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
@@ -9,22 +9,22 @@
     "source": "腾讯前复权及流通市值（全量抓取）；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
-    "trade_date": "2026-10-12",
+    "trade_date": "2026-10-13",
     "reference_rows": 5561,
     "sh_sz_trading_rows": 5212,
     "market_cap_rows": 5212,
     "market_cap_source": "Tencent quote field 44 (circulating market cap, 亿元)",
-    "excluded_risk_names": 196,
-    "universe": 5016,
-    "valid_histories": 5016,
-    "elapsed_seconds": 553,
+    "excluded_risk_names": 195,
+    "universe": 5017,
+    "valid_histories": 5017,
+    "elapsed_seconds": 565,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
     "shared_snapshot": true,
     "strategy_counts": {
       "evaluated": 4967,
-      "insufficient_history": 49,
+      "insufficient_history": 50,
       "errors": 0
     },
     "note": "周/月包含当前未结束周期；成交量不复权；短历史股票单列，不算网络失败"
@@ -32,18 +32,29 @@
   "strategy": "周线爆发",
   "adjustment": "qfq",
   "data_source": "腾讯前复权及流通市值（全量抓取）；Tushare当日日线校验",
-  "count": 1,
+  "count": 2,
   "stocks": [
+    {
+      "code": "600851",
+      "name": "海欣股份",
+      "price": 9.46,
+      "change_pct": 10.0,
+      "volume": 556295.58,
+      "turnover": 508799.296,
+      "open": 8.69,
+      "high": 9.46,
+      "low": 8.28
+    },
     {
       "code": "605303",
       "name": "园林股份",
-      "price": 28.99,
-      "change_pct": -10.0,
-      "volume": 72401.89,
-      "turnover": 211539.819,
-      "open": 29.5,
-      "high": 30.25,
-      "low": 28.99
+      "price": 27.72,
+      "change_pct": -4.38,
+      "volume": 160332.99,
+      "turnover": 432890.174,
+      "open": 26.27,
+      "high": 29.1,
+      "low": 26.09
     }
   ]
 }
