@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-10-15 16:10:23",
+  "update_time": "2026-10-16 16:10:31",
   "timezone": "Asia/Shanghai",
-  "trade_date": "2026-10-15",
+  "trade_date": "2026-10-16",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
@@ -9,21 +9,21 @@
     "source": "腾讯前复权及流通市值（全量抓取）；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
-    "trade_date": "2026-10-15",
-    "reference_rows": 5565,
-    "sh_sz_trading_rows": 5215,
-    "market_cap_rows": 5215,
+    "trade_date": "2026-10-16",
+    "reference_rows": 5567,
+    "sh_sz_trading_rows": 5216,
+    "market_cap_rows": 5216,
     "market_cap_source": "Tencent quote field 44 (circulating market cap, 亿元)",
     "excluded_risk_names": 195,
-    "universe": 5020,
-    "valid_histories": 5020,
-    "elapsed_seconds": 562,
+    "universe": 5021,
+    "valid_histories": 5021,
+    "elapsed_seconds": 570,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
     "shared_snapshot": true,
     "strategy_counts": {
-      "evaluated": 4969,
+      "evaluated": 4970,
       "insufficient_history": 51,
       "errors": 0
     },
@@ -37,13 +37,13 @@
     {
       "code": "601858",
       "name": "中国科传",
-      "price": 25.8,
-      "change_pct": -1.19,
-      "volume": 456743.38,
-      "turnover": 1206623.898,
-      "open": 25.35,
-      "high": 27.58,
-      "low": 25.3
+      "price": 26.24,
+      "change_pct": 1.71,
+      "volume": 274601.44,
+      "turnover": 721038.925,
+      "open": 26.21,
+      "high": 26.95,
+      "low": 25.72
     }
   ]
 }
