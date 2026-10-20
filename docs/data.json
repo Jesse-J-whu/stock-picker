@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-10-19 16:10:15",
+  "update_time": "2026-10-20 16:11:09",
   "timezone": "Asia/Shanghai",
-  "trade_date": "2026-10-19",
+  "trade_date": "2026-10-20",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
@@ -9,21 +9,21 @@
     "source": "腾讯前复权及流通市值（全量抓取）；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
-    "trade_date": "2026-10-19",
-    "reference_rows": 5564,
-    "sh_sz_trading_rows": 5213,
-    "market_cap_rows": 5213,
+    "trade_date": "2026-10-20",
+    "reference_rows": 5568,
+    "sh_sz_trading_rows": 5217,
+    "market_cap_rows": 5217,
     "market_cap_source": "Tencent quote field 44 (circulating market cap, 亿元)",
     "excluded_risk_names": 193,
-    "universe": 5020,
-    "valid_histories": 5020,
-    "elapsed_seconds": 554,
+    "universe": 5024,
+    "valid_histories": 5024,
+    "elapsed_seconds": 606,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
     "shared_snapshot": true,
     "strategy_counts": {
-      "evaluated": 4972,
+      "evaluated": 4976,
       "insufficient_history": 48,
       "errors": 0
     },
@@ -35,26 +35,26 @@
   "count": 2,
   "stocks": [
     {
-      "code": "300096",
-      "name": "易联众",
-      "price": 10.1,
-      "change_pct": 13.61,
-      "volume": 366049.73,
-      "turnover": 374656.41714,
-      "open": 8.89,
-      "high": 10.67,
-      "low": 8.82
+      "code": "301591",
+      "name": "肯特股份",
+      "price": 49.0,
+      "change_pct": 3.22,
+      "volume": 222806.93,
+      "turnover": 1066162.96584,
+      "open": 47.53,
+      "high": 49.99,
+      "low": 45.6
     },
     {
       "code": "601858",
       "name": "中国科传",
-      "price": 26.52,
-      "change_pct": 1.07,
-      "volume": 271887.62,
-      "turnover": 725203.296,
-      "open": 26.56,
-      "high": 27.5,
-      "low": 25.83
+      "price": 25.25,
+      "change_pct": -4.79,
+      "volume": 239171.5,
+      "turnover": 606376.914,
+      "open": 25.61,
+      "high": 26.32,
+      "low": 24.8
     }
   ]
 }
