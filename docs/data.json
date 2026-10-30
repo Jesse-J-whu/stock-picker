@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-10-29 16:10:29",
+  "update_time": "2026-10-30 16:10:27",
   "timezone": "Asia/Shanghai",
-  "trade_date": "2026-10-29",
+  "trade_date": "2026-10-30",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
@@ -9,21 +9,21 @@
     "source": "腾讯前复权及流通市值（全量抓取）；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
-    "trade_date": "2026-10-29",
-    "reference_rows": 5570,
-    "sh_sz_trading_rows": 5216,
-    "market_cap_rows": 5216,
+    "trade_date": "2026-10-30",
+    "reference_rows": 5571,
+    "sh_sz_trading_rows": 5217,
+    "market_cap_rows": 5217,
     "market_cap_source": "Tencent quote field 44 (circulating market cap, 亿元)",
     "excluded_risk_names": 192,
-    "universe": 5024,
-    "valid_histories": 5024,
+    "universe": 5025,
+    "valid_histories": 5025,
     "elapsed_seconds": 567,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
     "shared_snapshot": true,
     "strategy_counts": {
-      "evaluated": 4978,
+      "evaluated": 4979,
       "insufficient_history": 46,
       "errors": 0
     },
@@ -37,13 +37,13 @@
     {
       "code": "300307",
       "name": "慈星股份",
-      "price": 9.51,
-      "change_pct": -8.12,
-      "volume": 1221158.29,
-      "turnover": 1191277.30442,
-      "open": 10.1,
-      "high": 10.15,
-      "low": 9.49
+      "price": 8.81,
+      "change_pct": -7.36,
+      "volume": 1045490.1,
+      "turnover": 956059.0221,
+      "open": 9.5,
+      "high": 9.63,
+      "low": 8.76
     }
   ]
 }
