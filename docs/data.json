@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-11-24 17:10:06",
+  "update_time": "2026-11-24 17:31:35",
   "timezone": "Asia/Shanghai",
   "trade_date": "2026-11-24",
   "data_quality": {
@@ -17,7 +17,7 @@
     "excluded_risk_names": 190,
     "universe": 5029,
     "valid_histories": 5029,
-    "elapsed_seconds": 35,
+    "elapsed_seconds": 36,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
